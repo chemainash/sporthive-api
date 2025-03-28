@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportHive - Coach Dashboard</title>
+    <link rel="stylesheet" href="dashboard-styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>SportHive</h1>
+            </div>
+            <nav class="sidebar-menu">
+                <ul>
+                    <li class="active">
+                        <a href="#dashboard">
+                            <span class="icon">📊</span>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#athletes">
+                            <span class="icon">👥</span>
+                            Athletes
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#teams">
+                            <span class="icon">🏆</span>
+                            Teams
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#events">
+                            <span class="icon">🗓️</span>
+                            Events
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#analytics">
+                            <span class="icon">📈</span>
+                            Analytics
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <h2>Coach Dashboard</h2>
+                    <p>Welcome, Coach Smith</p>
+                </div>
+                <div class="header-right">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search athletes, teams...">
+                        <button>🔍</button>
+                    </div>
+                    <div class="notifications">
+                        <button>🔔</button>
+                    </div>
+                    <div class="profile">
+                        <img src="/api/placeholder/50/50" alt="Coach Profile">
+                    </div>
+                </div>
+            </header>
+
+            <section class="overview-cards">
+                <div class="card athletes-count">
+                    <h3>Total Athletes</h3>
+                    <div class="card-content">
+                        <span class="big-number">124</span>
+                        <span class="trend positive">▲ 12%</span>
+                    </div>
+                </div>
+                <div class="card teams-count">
+                    <h3>Active Teams</h3>
+                    <div class="card-content">
+                        <span class="big-number">8</span>
+                        <span class="trend negative">▼ 2%</span>
+                    </div>
+                </div>
+                <div class="card events-count">
+                    <h3>Upcoming Events</h3>
+                    <div class="card-content">
+                        <span class="big-number">15</span>
+                        <span class="trend positive">▲ 5%</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dashboard-content">
+                <div class="athletes-performance">
+                    <div class="section-header">
+                        <h3>Athlete Performance</h3>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    <table class="performance-table">
+                        <thead>
+                            <tr>
+                                <th>Athlete</th>
+                                <th>Sport</th>
+                                <th>Performance</th>
+                                <th>Progress</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img src="/api/placeholder/40/40" alt="Athlete">
+                                    John Doe
+                                </td>
+                                <td>Basketball</td>
+                                <td>85%</td>
+                                <td>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 85%;"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- More athlete rows -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="upcoming-events">
+                    <div class="section-header">
+                        <h3>Upcoming Events</h3>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    <div class="events-list">
+                        <div class="event-card">
+                            <div class="event-date">
+                                <span class="day">15</span>
+                                <span class="month">Apr</span>
+                            </div>
+                            <div class="event-details">
+                                <h4>Tennis Open Championships</h4>
+                                <p>Regional Tournament</p>
+                            </div>
+                        </div>
+                        <!-- More event cards -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="dashboard-script.js"></script>
+</body>
+</html>
