@@ -1,0 +1,281 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportHive - Where Passion Meets Performance</title>
+    <link rel="stylesheet" href="{% static 'css/athlete_dashboard.css' %}">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="/api/placeholder/120/40" alt=" Logo">
+            </div>
+            <div class="nav-links">
+                <a href="#" class="nav-item">About Us</a>
+                <a href="#" class="nav-item">Events</a>
+                <a href="#" class="nav-item">Sports</a>
+                <a href="#" class="nav-item">Tournament</a>
+                <a href="#" class="nav-item">FAQ</a>
+            </div>
+            <button class="register-btn">Register Now</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Where Passion Meets Performance and Players Thrive</h1>
+            <p>Join our community of athletes, coaches, and sports enthusiasts</p>
+            <button class="lets-go-btn">Let's Go!</button>
+        </div>
+    </section>
+
+    <!-- Mission Statement -->
+    <section class="mission">
+        <div class="container">
+            <h3>Our Vision</h3>
+            <h2 class="year">2025</h2>
+            <p class="mission-text">We are driven by a deep passion for sports and a commitment to empowering athletes of all levels.</p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <img src="/api/placeholder/400/250" alt="Athletes playing volleyball">
+                    <div class="feature-info">
+                        <h3>Connect with like-minded athletes</h3>
+                        <p>Find your community and grow together</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <img src="/api/placeholder/400/250" alt="Training session">
+                    <div class="feature-info">
+                        <h3>Access professional training resources</h3>
+                        <p>Level up with expert guidance</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <img src="/api/placeholder/400/250" alt="Sportsmanship">
+                    <div class="feature-info">
+                        <h3>We promote integrity and sportsmanship in competition</h3>
+                        <p>Values that matter on and off the field</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <img src="/api/placeholder/400/250" alt="Athlete achievements">
+                    <div class="feature-info">
+                        <h3>Track your progress and celebrate victories</h3>
+                        <p>See your growth over time</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Events -->
+    <section class="featured-events">
+        <div class="container">
+            <h2>Challenge Yourself, Compete with the Best, and Take Your Game to the Next Level</h2>
+
+            <div class="event-cards">
+                <!-- Event Card 1 -->
+                <div class="event-card">
+                    <div class="event-header">
+                        <div class="coach-info">
+                            <img src="/api/placeholder/50/50" alt="Coach Avatar" class="coach-avatar">
+                            <div class="coach-details">
+                                <h4>Fun Match With Taufiq Hidayat</h4>
+                                <p>Former BWF World Championship Winner • <span class="badge">Tennis Pro</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event-details">
+                        <div class="date-time">
+                            <h5>DATE & TIME</h5>
+                            <p>December 28, 2024</p>
+                            <p>Wednesday, 09:00 AM - 12:00 PM</p>
+                            <button class="join-btn">Join Now</button>
+                        </div>
+                        <div class="location">
+                            <h5>LOCATION</h5>
+                            <img src="/api/placeholder/150/100" alt="Location Map" class="location-map">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Event Card 2 -->
+                <div class="event-card highlight-event">
+                    <div class="event-banner">
+                        <h3>Tennis Open Championship</h3>
+                        <p>Registration open until April 30</p>
+                        <img src="/api/placeholder/200/120" alt="Tennis Tournament" class="event-image">
+                        <button class="register-event-btn">Register Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sports Categories -->
+    <section class="sports-categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>One Platform for Every Sport</h2>
+                <a href="#" class="see-all">Let's See All <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search your desired sports...">
+            </div>
+
+            <div class="categories-grid">
+                <div class="category-card basketball">
+                    <div class="category-info">
+                        <h3>Basketball</h3>
+                        <p>25 Coaches</p>
+                    </div>
+                </div>
+                <div class="category-card swimming">
+                    <div class="category-info">
+                        <h3>Swimming</h3>
+                        <p>18 Coaches</p>
+                    </div>
+                </div>
+                <div class="category-card rock-climbing">
+                    <div class="category-info">
+                        <h3>Rock Climbing</h3>
+                        <p>12 Coaches</p>
+                    </div>
+                </div>
+                <div class="category-card track-field">
+                    <div class="category-info">
+                        <h3>Track and Field</h3>
+                        <p>20 Coaches</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>Real Stories, Real Experiences, and the Impact  Has Had on Their Game</h2>
+            
+            <div class="testimonial-carousel">
+                <div class="testimonial-slide active">
+                    <div class="testimonial-card">
+                        <img src="/api/placeholder/400/300" alt="Athlete Testimonial" class="testimonial-image">
+                        <div class="testimonial-content">
+                            <div class="testimonial-text">
+                                <p>"The coaching I received through  has completely changed my game. I've improved my technique, boosted my confidence, and made connections that will last a lifetime."</p>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="/api/placeholder/40/40" alt="Author Avatar" class="author-avatar">
+                                <p>Jason Mitchell</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Carousel Navigation -->
+                <div class="carousel-controls">
+                    <button class="carousel-prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="carousel-indicators">
+                        <span class="indicator active"></span>
+                        <span class="indicator"></span>
+                        <span class="indicator"></span>
+                    </div>
+                    <button class="carousel-next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Community Section -->
+    <section class="join-community">
+        <div class="container">
+            <div class="community-content">
+                <img src="/api/placeholder/500/300" alt="Athletes Community" class="community-image">
+                <div class="community-text">
+                    <h2>Join the  Movement – Elevate Your Game and Connect with Athletes!</h2>
+                    <p>Find your ideal mentors, join our events, and be the champion you were meant to be! Sign up now to begin your journey with !</p>
+                    <div class="cta-buttons">
+                        <button class="explore-btn">Explore More Sports</button>
+                        <button class="signup-btn">Sign Up For Free</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="/api/placeholder/120/40" alt=" Logo" class="footer-logo">
+                    <p class="tagline">Where Passion Meets Performance and Players Thrive</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Explore Sport</h4>
+                        <a href="#">Basketball</a>
+                        <a href="#">Swimming</a>
+                        <a href="#">Tennis</a>
+                        <a href="#">Rock Climbing</a>
+                        <a href="#">Running</a>
+                        <a href="#">Badminton</a>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4>About Us</h4>
+                        <a href="#">Our Vision</a>
+                        <a href="#">Team</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Contact</a>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4>Quick Menu</h4>
+                        <a href="#">Sign Up</a>
+                        <a href="#">Login</a>
+                        <a href="#">Events</a>
+                        <a href="#">Testimonial</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 </p>
+                <div class="legal-links">
+                    <a href="#">Terms & Conditions</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'javascript/athlete_dashoard.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,292 @@
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --background-color: #f4f7f6;
+    --text-color: #333;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+/* Navigation Styles */
+header {
+    background-color: var(--white);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-links li {
+    margin-left: 1.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.cta-button {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: darken(var(--primary-color), 10%);
+}
+
+/* Hero Section */
+#hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6rem 5% 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero-content {
+    flex: 1;
+    padding-right: 2rem;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.hero-content p {
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
+}
+
+.hero-images {
+    flex: 1;
+}
+
+.hero-images img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Sports Overview */
+#sports-overview {
+    background-color: var(--white);
+    padding: 3rem 5%;
+    text-align: center;
+}
+
+.sports-grid {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.sport-card {
+    flex: 1;
+    margin: 0 1rem;
+    background-color: var(--background-color);
+    padding: 1.5rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.sport-card:hover {
+    transform: scale(1.05);
+}
+
+.sport-card img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+/* Featured Events */
+#featured-events {
+    padding: 3rem 5%;
+    background-color: var(--background-color);
+}
+
+.events-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.event-card {
+    flex: 1;
+    margin: 0 1rem;
+    background-color: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.event-card:hover {
+    transform: scale(1.05);
+}
+
+.event-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.event-card h3, .event-card p {
+    padding: 0.5rem 1rem;
+}
+
+.event-link {
+    display: block;
+    text-align: center;
+    padding: 0.75rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-decoration: none;
+}
+
+/* Testimonials */
+#testimonials {
+    padding: 3rem 5%;
+    background-color: var(--white);
+    text-align: center;
+}
+
+.testimonial-grid {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.testimonial-card {
+    flex: 0 1 400px;
+    margin: 0 1rem;
+    padding: 1.5rem;
+    background-color: var(--background-color);
+    border-radius: 10px;
+}
+
+.testimonial-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.rating {
+    color: #ffc107;
+    margin-top: 1rem;
+}
+
+/* Community Signup */
+#community-signup {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 3rem 5%;
+    text-align: center;
+}
+
+.signup-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.signup-form input {
+    padding: 0.75rem;
+    width: 300px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+}
+
+.signup-form button {
+    border: none;
+    border-radius: 0 5px 5px 0;
+}
+
+/* Footer */
+footer {
+    background-color: var(--text-color);
+    color: var(--white);
+    padding: 2rem 5%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-links a, .social-links a {
+    color: var(--white);
+    text-decoration: none;
+    margin: 0 1rem;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    #hero, .sports-grid, .events-container, .testimonial-grid, .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-content, .hero-images, .sport-card, .event-card, .testimonial-card {
+        margin: 1rem 0;
+        width: 100%;
+    }
+
+    .signup-form {
+        flex-direction: column;
+    }
+
+    .signup-form input, .signup-form button {
+        width: 100%;
+        margin: 0.5rem 0;
+        border-radius: 5px;
+    }
+}

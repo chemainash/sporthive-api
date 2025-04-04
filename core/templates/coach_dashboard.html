@@ -1,154 +1,362 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SportHive - Coach Dashboard</title>
-    <link rel="stylesheet" href="dashboard-styles.css">
+    <link rel="stylesheet" href="{% static 'css/coach_dashboard.css' %}">
 </head>
 <body>
     <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
         <aside class="sidebar">
             <div class="logo">
-                <h1>SportHive</h1>
+                <img src="{% static 'images/log.png' %}" alt="Athletes Connecting">
             </div>
-            <nav class="sidebar-menu">
+            
+            <nav class="sidebar-nav">
                 <ul>
-                    <li class="active">
-                        <a href="#dashboard">
-                            <span class="icon">📊</span>
-                            Dashboard
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#athletes">
-                            <span class="icon">👥</span>
-                            Athletes
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#teams">
-                            <span class="icon">🏆</span>
-                            Teams
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#events">
-                            <span class="icon">🗓️</span>
-                            Events
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#analytics">
-                            <span class="icon">📈</span>
-                            Analytics
-                        </a>
-                    </li>
+                    <li class="active"><a href="#"><span class="icon">📊</span>Dashboard</a></li>
+                    <li><a href="#"><span class="icon">👥</span>My Athletes</a></li>
+                    <li><a href="#"><span class="icon">📆</span>Schedule</a></li>
+                    <li><a href="#"><span class="icon">📝</span>Training Plans</a></li>
+                    <li><a href="#"><span class="icon">📈</span>Performance</a></li>
+                    <li><a href="#"><span class="icon">🏆</span>Competitions</a></li>
+                    <li><a href="#"><span class="icon">📨</span>Messages</a></li>
+                    <li><a href="#"><span class="icon">⚙️</span>Settings</a></li>
                 </ul>
             </nav>
+            
+            <div class="profile-preview">
+                <img src="{% static 'images/trainer.webp' %}" alt="Athletes Connecting">
+                <div class="profile-info">
+                    <h4>Coach Michael</h4>
+                    <p>Basketball • Level 3</p>
+                </div>
+            </div>
         </aside>
 
+        <!-- Main Content Area -->
         <main class="main-content">
-            <header class="dashboard-header">
-                <div class="header-left">
-                    <h2>Coach Dashboard</h2>
-                    <p>Welcome, Coach Smith</p>
+            <!-- Top Navigation Bar -->
+            <header class="top-nav">
+                <div class="search-bar">
+                    <span class="icon">🔍</span>
+                    <input type="text" placeholder="Search athletes, plans, events...">
                 </div>
-                <div class="header-right">
-                    <div class="search-bar">
-                        <input type="text" placeholder="Search athletes, teams...">
-                        <button>🔍</button>
+                
+                <div class="top-nav-actions">
+                    <div class="notification">
+                        <span class="icon">🔔</span>
+                        <span class="badge">3</span>
                     </div>
-                    <div class="notifications">
-                        <button>🔔</button>
+                    <div class="messages">
+                        <span class="icon">✉️</span>
+                        <span class="badge">5</span>
                     </div>
-                    <div class="profile">
-                        <img src="/api/placeholder/50/50" alt="Coach Profile">
+                    <div class="help">
+                        <span class="icon">❓</span>
                     </div>
                 </div>
             </header>
 
-            <section class="overview-cards">
-                <div class="card athletes-count">
-                    <h3>Total Athletes</h3>
-                    <div class="card-content">
-                        <span class="big-number">124</span>
-                        <span class="trend positive">▲ 12%</span>
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <div class="welcome-text">
+                    <h1>Welcome back, Coach Michael!</h1>
+                    <p>Here's what's happening with your athletes today</p>
+                </div>
+                <div class="actions">
+                    <button class="primary-btn">Create Training Plan</button>
+                    <button class="secondary-btn">Schedule Event</button>
+                </div>
+            </section>
+
+            <!-- Stats Overview -->
+            <section class="stats-overview">
+                <div class="stat-card">
+                    <div class="stat-icon athlete-icon">👥</div>
+                    <div class="stat-details">
+                        <h3>18</h3>
+                        <p>Active Athletes</p>
+                    </div>
+                    <div class="stat-change positive">
+                        <span>+2</span> this week
                     </div>
                 </div>
-                <div class="card teams-count">
-                    <h3>Active Teams</h3>
-                    <div class="card-content">
-                        <span class="big-number">8</span>
-                        <span class="trend negative">▼ 2%</span>
+                
+                <div class="stat-card">
+                    <div class="stat-icon training-icon">🏋️</div>
+                    <div class="stat-details">
+                        <h3>24</h3>
+                        <p>Training Sessions</p>
+                    </div>
+                    <div class="stat-change positive">
+                        <span>+5</span> this week
                     </div>
                 </div>
-                <div class="card events-count">
-                    <h3>Upcoming Events</h3>
-                    <div class="card-content">
-                        <span class="big-number">15</span>
-                        <span class="trend positive">▲ 5%</span>
+                
+                <div class="stat-card">
+                    <div class="stat-icon performance-icon">📈</div>
+                    <div class="stat-details">
+                        <h3>87%</h3>
+                        <p>Performance Rate</p>
+                    </div>
+                    <div class="stat-change positive">
+                        <span>+3%</span> this month
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon event-icon">🏆</div>
+                    <div class="stat-details">
+                        <h3>2</h3>
+                        <p>Upcoming Events</p>
+                    </div>
+                    <div class="stat-change neutral">
+                        <span>Next:</span> 3 days
                     </div>
                 </div>
             </section>
 
-            <section class="dashboard-content">
-                <div class="athletes-performance">
+            <!-- Recent Activities and Upcoming Events -->
+            <div class="dashboard-grid">
+                <!-- Recent Activities -->
+                <section class="recent-activities">
                     <div class="section-header">
-                        <h3>Athlete Performance</h3>
+                        <h2>Recent Activities</h2>
                         <a href="#" class="view-all">View All</a>
                     </div>
-                    <table class="performance-table">
-                        <thead>
-                            <tr>
-                                <th>Athlete</th>
-                                <th>Sport</th>
-                                <th>Performance</th>
-                                <th>Progress</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <img src="/api/placeholder/40/40" alt="Athlete">
-                                    John Doe
-                                </td>
-                                <td>Basketball</td>
-                                <td>85%</td>
-                                <td>
-                                    <div class="progress-bar">
-                                        <div class="progress" style="width: 85%;"></div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <!-- More athlete rows -->
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="upcoming-events">
-                    <div class="section-header">
-                        <h3>Upcoming Events</h3>
-                        <a href="#" class="view-all">View All</a>
-                    </div>
-                    <div class="events-list">
-                        <div class="event-card">
-                            <div class="event-date">
-                                <span class="day">15</span>
-                                <span class="month">Apr</span>
-                            </div>
-                            <div class="event-details">
-                                <h4>Tennis Open Championships</h4>
-                                <p>Regional Tournament</p>
+                    
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon">✅</div>
+                            <div class="activity-details">
+                                <h4>Training Session Completed</h4>
+                                <p>Basketball fundamentals with Team A</p>
+                                <span class="activity-time">Today, 2:30 PM</span>
                             </div>
                         </div>
-                        <!-- More event cards -->
+                        
+                        <div class="activity-item">
+                            <div class="activity-icon">📊</div>
+                            <div class="activity-details">
+                                <h4>Performance Assessment Updated</h4>
+                                <p>Updated stats for 5 athletes</p>
+                                <span class="activity-time">Yesterday, 5:15 PM</span>
+                            </div>
+                        </div>
+                        
+                        <div class="activity-item">
+                            <div class="activity-icon">🏆</div>
+                            <div class="activity-details">
+                                <h4>Tournament Registration</h4>
+                                <p>Regional Basketball Championship</p>
+                                <span class="activity-time">Yesterday, 10:00 AM</span>
+                            </div>
+                        </div>
+                        
+                        <div class="activity-item">
+                            <div class="activity-icon">👤</div>
+                            <div class="activity-details">
+                                <h4>New Athlete Joined</h4>
+                                <p>Marcus Johnson joined your team</p>
+                                <span class="activity-time">Dec 26, 2024</span>
+                            </div>
+                        </div>
                     </div>
+                </section>
+                
+                <!-- Upcoming Events -->
+                <section class="upcoming-events">
+                    <div class="section-header">
+                        <h2>Upcoming Events</h2>
+                        <a href="#" class="view-all">View Calendar</a>
+                    </div>
+                    
+                    <div class="event-list">
+                        <div class="event-item">
+                            <div class="event-date">
+                                <span class="day">03</span>
+                                <span class="month">JAN</span>
+                            </div>
+                            <div class="event-details">
+                                <h4>Team Practice Session</h4>
+                                <p><span class="icon">⏰</span> 4:00 PM - 6:00 PM</p>
+                                <p><span class="icon">📍</span> Main Basketball Court</p>
+                            </div>
+                        </div>
+                        
+                        <div class="event-item">
+                            <div class="event-date">
+                                <span class="day">10</span>
+                                <span class="month">JAN</span>
+                            </div>
+                            <div class="event-details">
+                                <h4>City Basketball Tournament</h4>
+                                <p><span class="icon">⏰</span> 9:00 AM - 5:00 PM</p>
+                                <p><span class="icon">📍</span> Central Sports Complex</p>
+                            </div>
+                        </div>
+                        
+                        <div class="event-item">
+                            <div class="event-date">
+                                <span class="day">15</span>
+                                <span class="month">JAN</span>
+                            </div>
+                            <div class="event-details">
+                                <h4>Fitness Assessment</h4>
+                                <p><span class="icon">⏰</span> 3:00 PM - 5:30 PM</p>
+                                <p><span class="icon">📍</span> Training Center</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Athlete Performance -->
+            <section class="athlete-performance">
+                <div class="section-header">
+                    <h2>Athlete Performance Overview</h2>
+                    <div class="time-filter">
+                        <button class="time-btn active">Week</button>
+                        <button class="time-btn">Month</button>
+                        <button class="time-btn">Quarter</button>
+                    </div>
+                </div>
+                
+                <div class="performance-grid">
+                    <div class="performance-chart">
+                        <div class="chart-container" id="performance-chart">
+                            <!-- Chart will be rendered here by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="top-performers">
+                        <h3>Top Performers</h3>
+                        <div class="performer-list">
+                            <div class="performer-item">
+                                <img src="/api/placeholder/40/40" alt="Athlete 1" class="performer-img">
+                                <div class="performer-details">
+                                    <h4>Alex Johnson</h4>
+                                    <div class="skill-bars">
+                                        <div class="skill-bar">
+                                            <span class="skill-label">Shooting</span>
+                                            <div class="progress-bar">
+                                                <div class="progress" style="width: 85%;"></div>
+                                            </div>
+                                            <span class="skill-value">85%</span>
+                                        </div>
+                                        <div class="skill-bar">
+                                            <span class="skill-label">Defense</span>
+                                            <div class="progress-bar">
+                                                <div class="progress" style="width: 78%;"></div>
+                                            </div>
+                                            <span class="skill-value">78%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="performer-item">
+                                <img src="/api/placeholder/40/40" alt="Athlete 2" class="performer-img">
+                                <div class="performer-details">
+                                    <h4>Maria Garcia</h4>
+                                    <div class="skill-bars">
+                                        <div class="skill-bar">
+                                            <span class="skill-label">Passing</span>
+                                            <div class="progress-bar">
+                                                <div class="progress" style="width: 92%;"></div>
+                                            </div>
+                                            <span class="skill-value">92%</span>
+                                        </div>
+                                        <div class="skill-bar">
+                                            <span class="skill-label">Stamina</span>
+                                            <div class="progress-bar">
+                                                <div class="progress" style="width: 88%;"></div>
+                                            </div>
+                                            <span class="skill-value">88%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="performer-item">
+                                <img src="/api/placeholder/40/40" alt="Athlete 3" class="performer-img">
+                                <div class="performer-details">
+                                    <h4>James Wilson</h4>
+                                    <div class="skill-bars">
+                                        <div class="skill-bar">
+                                            <span class="skill-label">Rebounds</span>
+                                            <div class="progress-bar">
+                                                <div class="progress" style="width: 90%;"></div>
+                                            </div>
+                                            <span class="skill-value">90%</span>
+                                        </div>
+                                        <div class="skill-bar">
+                                            <span class="skill-label">Teamwork</span>
+                                            <div class="progress-bar">
+                                                <div class="progress" style="width: 82%;"></div>
+                                            </div>
+                                            <span class="skill-value">82%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Quick Access -->
+            <section class="quick-access">
+                <div class="section-header">
+                    <h2>Quick Access</h2>
+                </div>
+                
+                <div class="quick-access-grid">
+                    <a href="#" class="quick-access-card">
+                        <div class="icon">📋</div>
+                        <h3>Training Plans</h3>
+                        <p>Create & manage plans</p>
+                    </a>
+                    
+                    <a href="#" class="quick-access-card">
+                        <div class="icon">📊</div>
+                        <h3>Analytics</h3>
+                        <p>Performance insights</p>
+                    </a>
+                    
+                    <a href="#" class="quick-access-card">
+                        <div class="icon">👥</div>
+                        <h3>Team Management</h3>
+                        <p>Organize your athletes</p>
+                    </a>
+                    
+                    <a href="#" class="quick-access-card">
+                        <div class="icon">📆</div>
+                        <h3>Schedule</h3>
+                        <p>Plan future events</p>
+                    </a>
                 </div>
             </section>
         </main>
     </div>
 
-    <script src="dashboard-script.js"></script>
+    <footer class="footer">
+        <p>&copy; 2024 SportHive. All rights reserved.</p>
+        <div class="social-media">
+            <a href="#"><img src="/api/placeholder/20/20" alt="Facebook"></a>
+            <a href="#"><img src="/api/placeholder/20/20" alt="Twitter"></a>
+            <a href="#"><img src="/api/placeholder/20/20" alt="Instagram"></a>
+        </div>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Us</a>
+        </div>
+    </footer>
+    <script src="{% static 'javascript/coach_dashboard.js' %}"></script> 
 </body>
 </html>

@@ -1,0 +1,383 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportHive - Events</title>
+    <link rel="stylesheet" href="{% static 'css/event_dashboard.css' %}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="/api/placeholder/120/40" alt="SportHive Logo">
+        </div>
+        <div class="nav-links">
+            <a href="#">About Us</a>
+            <a href="#" class="active">Events</a>
+            <a href="#">Sports</a>
+            <a href="#">Testimonial</a>
+            <a href="#">FAQ</a>
+        </div>
+        <button class="register-btn">Register Now</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Upcoming Events Where Passion Meets Performance</h1>
+            <p>Join our community events and experience the thrill of competitive sports</p>
+            <button class="cta-btn">Find Events</button>
+        </div>
+    </header>
+
+    <!-- Featured Events Section -->
+    <section class="featured-events">
+        <div class="section-header">
+            <h2>Featured Events</h2>
+            <a href="#" class="view-all">View All</a>
+        </div>
+        
+        <div class="events-grid">
+            <!-- Event Card 1 -->
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="/api/placeholder/400/250" alt="Tennis Tournament">
+                    <div class="event-category">Tennis</div>
+                </div>
+                <div class="event-details">
+                    <h3>Summer Tennis Open Championship</h3>
+                    <div class="event-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>July 15-18, 2025</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Central Sports Complex, Downtown</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-user-friends"></i>
+                            <span>128 Participants</span>
+                        </div>
+                    </div>
+                    <p class="event-description">
+                        Join us for the annual summer tennis championship with players from across the country competing for the grand prize and recognition.
+                    </p>
+                    <div class="event-actions">
+                        <button class="register-event-btn">Register Now</button>
+                        <button class="details-btn">View Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Card 2 -->
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="/api/placeholder/400/250" alt="Basketball Tournament">
+                    <div class="event-category">Basketball</div>
+                </div>
+                <div class="event-details">
+                    <h3>Regional Basketball Tournament</h3>
+                    <div class="event-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>August 5-8, 2025</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>City Arena Stadium</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-user-friends"></i>
+                            <span>24 Teams</span>
+                        </div>
+                    </div>
+                    <p class="event-description">
+                        Experience the excitement as top basketball teams compete in this regional tournament showcasing talent, teamwork, and determination.
+                    </p>
+                    <div class="event-actions">
+                        <button class="register-event-btn">Register Now</button>
+                        <button class="details-btn">View Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Card 3 -->
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="/api/placeholder/400/250" alt="Swimming Competition">
+                    <div class="event-category">Swimming</div>
+                </div>
+                <div class="event-details">
+                    <h3>National Swimming Championships</h3>
+                    <div class="event-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>September 12-15, 2025</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Olympic Swimming Center</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-user-friends"></i>
+                            <span>200+ Swimmers</span>
+                        </div>
+                    </div>
+                    <p class="event-description">
+                        Watch as swimmers from around the country compete in various categories at this prestigious national championship event.
+                    </p>
+                    <div class="event-actions">
+                        <button class="register-event-btn">Register Now</button>
+                        <button class="details-btn">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Calendar Section -->
+    <section class="events-calendar">
+        <div class="section-header">
+            <h2>Events Calendar</h2>
+            <div class="calendar-controls">
+                <button id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                <span id="current-month">April 2025</span>
+                <button id="next-month"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+        
+        <div class="calendar-container">
+            <div class="weekdays">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+            <div class="calendar-grid" id="calendar-grid">
+                <!-- Calendar days will be generated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sports Categories Section -->
+    <section class="sports-categories">
+        <div class="section-header">
+            <h2>Browse Events by Sport</h2>
+        </div>
+        
+        <div class="categories-grid">
+            <div class="category-card">
+                <img src="/api/placeholder/300/200" alt="Basketball">
+                <div class="category-name">Basketball</div>
+                <div class="event-count">12 Events</div>
+            </div>
+            
+            <div class="category-card">
+                <img src="/api/placeholder/300/200" alt="Tennis">
+                <div class="category-name">Tennis</div>
+                <div class="event-count">8 Events</div>
+            </div>
+            
+            <div class="category-card">
+                <img src="/api/placeholder/300/200" alt="Swimming">
+                <div class="category-name">Swimming</div>
+                <div class="event-count">5 Events</div>
+            </div>
+            
+            <div class="category-card">
+                <img src="/api/placeholder/300/200" alt="Track & Field">
+                <div class="category-name">Track & Field</div>
+                <div class="event-count">7 Events</div>
+            </div>
+            
+            <div class="category-card">
+                <img src="/api/placeholder/300/200" alt="Soccer">
+                <div class="category-name">Soccer</div>
+                <div class="event-count">10 Events</div>
+            </div>
+            
+            <div class="category-card">
+                <img src="/api/placeholder/300/200" alt="Volleyball">
+                <div class="category-name">Volleyball</div>
+                <div class="event-count">6 Events</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Tournaments Section -->
+    <section class="upcoming-tournaments">
+        <div class="section-header">
+            <h2>Upcoming Tournaments</h2>
+            <div class="filter-controls">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="local">Local</button>
+                <button class="filter-btn" data-filter="regional">Regional</button>
+                <button class="filter-btn" data-filter="national">National</button>
+            </div>
+        </div>
+        
+        <div class="tournaments-list">
+            <!-- Tournament Item 1 -->
+            <div class="tournament-item" data-type="regional">
+                <div class="tournament-date">
+                    <div class="month">Apr</div>
+                    <div class="day">15</div>
+                </div>
+                <div class="tournament-details">
+                    <h3>Spring Basketball Tournament</h3>
+                    <div class="tournament-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Downtown Arena</span>
+                        <span><i class="fas fa-clock"></i> 9:00 AM - 6:00 PM</span>
+                    </div>
+                    <p>A regional tournament bringing together the best basketball talent in the area.</p>
+                </div>
+                <div class="tournament-category">
+                    <span>Basketball</span>
+                </div>
+                <button class="register-btn">Register</button>
+            </div>
+
+            <!-- Tournament Item 2 -->
+            <div class="tournament-item" data-type="national">
+                <div class="tournament-date">
+                    <div class="month">May</div>
+                    <div class="day">22</div>
+                </div>
+                <div class="tournament-details">
+                    <h3>National Tennis Championship</h3>
+                    <div class="tournament-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Grand Tennis Stadium</span>
+                        <span><i class="fas fa-clock"></i> 10:00 AM - 8:00 PM</span>
+                    </div>
+                    <p>The premier tennis event of the year featuring top players from across the country.</p>
+                </div>
+                <div class="tournament-category">
+                    <span>Tennis</span>
+                </div>
+                <button class="register-btn">Register</button>
+            </div>
+
+            <!-- Tournament Item 3 -->
+            <div class="tournament-item" data-type="local">
+                <div class="tournament-date">
+                    <div class="month">Jun</div>
+                    <div class="day">08</div>
+                </div>
+                <div class="tournament-details">
+                    <h3>Community Swimming Competition</h3>
+                    <div class="tournament-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> City Aquatic Center</span>
+                        <span><i class="fas fa-clock"></i> 8:00 AM - 3:00 PM</span>
+                    </div>
+                    <p>A local swimming event open to swimmers of all ages and skill levels in the community.</p>
+                </div>
+                <div class="tournament-category">
+                    <span>Swimming</span>
+                </div>
+                <button class="register-btn">Register</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Registration Section -->
+    <section class="event-registration">
+        <div class="registration-content">
+            <h2>Looking for an Event?</h2>
+            <p>Search our database of upcoming events or submit your own event to be featured on our platform.</p>
+            <div class="search-container">
+                <input type="text" placeholder="Search events by name, location, or sport...">
+                <button class="search-btn"><i class="fas fa-search"></i> Search</button>
+            </div>
+            <div class="action-buttons">
+                <button class="submit-event-btn">Submit Your Event</button>
+                <button class="browse-all-btn">Browse All Events</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Community Section -->
+    <section class="join-community">
+        <div class="community-content">
+            <h2>Join the SportHive Community</h2>
+            <p>Connect with athletes, find events, and take your game to the next level!</p>
+            <div class="community-actions">
+                <button class="sign-up-btn">Sign Up Now</button>
+                <button class="learn-more-btn">Learn More</button>
+            </div>
+        </div>
+        <div class="community-image">
+            <img src="/api/placeholder/500/300" alt="Sports Community">
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="/api/placeholder/120/40" alt="SportHive Logo">
+                <p>Where Passion Meets Performance and Players Thrive</p>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Explore Sport</h3>
+                    <a href="#">Basketball</a>
+                    <a href="#">Tennis</a>
+                    <a href="#">Swimming</a>
+                    <a href="#">Soccer</a>
+                    <a href="#">Track & Field</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <a href="#">Our Vision</a>
+                    <a href="#">Team</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Press</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="#">Events</a>
+                    <a href="#">Register</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+            
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+                <div class="newsletter">
+                    <h3>Subscribe to Newsletter</h3>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Your email address">
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 SportHive. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'javascript/event_dashboard.js' %}"></script> 
+</body>
+</html>

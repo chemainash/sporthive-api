@@ -14,9 +14,9 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#sports">Sports</a></li>
-                <li><a href="#events">Events</a></li>
+                <li><a href="event_dashboard">Events</a></li>
                 <li><a href="#community">Community</a></li>
-                <li><a href="login" class="cta-button">Join Now</a></li>
+                <li><a href="login" class="cta-button">Login</a></li>
             </ul>
         </nav>
     </header>
@@ -29,7 +29,7 @@
                 <a href="#sports" class="cta-button">Explore Sports</a>
             </div>
             <div class="hero-images">
-                <img src="/api/placeholder/400/300" alt="Athletes in action" class="hero-image">
+                <img src="{% static 'images/athletes.jpg' %}" alt="Athletes Connecting">
             </div>
         </section>
 
@@ -37,20 +37,20 @@
             <h2>One Platform for Every Sport</h2>
             <div class="sports-grid">
                 <div class="sport-card">
-                    <img src="/api/placeholder/200/200" alt="Basketball">
-                    <h3>Basketball</h3>
+                    <img src="{% static 'images/volleyball.jpg' %}" alt="Athletes Connecting">
+                    <h3>Volleyball</h3>
                 </div>
                 <div class="sport-card">
-                    <img src="/api/placeholder/200/200" alt="Swimming">
+                    <img src="{% static 'images/pool.jpg' %}" alt="Athletes Connecting">
                     <h3>Swimming</h3>
                 </div>
                 <div class="sport-card">
-                    <img src="/api/placeholder/200/200" alt="Rock Climbing">
-                    <h3>Rock Climbing</h3>
+                    <img src="{% static 'images/court.jpg' %}" alt="Athletes Connecting">
+                    <h3>Tennis</h3>
                 </div>
                 <div class="sport-card">
-                    <img src="/api/placeholder/200/200" alt="Running">
-                    <h3>Running</h3>
+                    <img src="{% static 'images/track.jpg' %}" alt="Athletes Connecting">
+                    <h3>Track</h3>
                 </div>
             </div>
         </section>
@@ -77,14 +77,14 @@
             <h2>Real Stories, Real Experiences</h2>
             <div class="testimonial-grid">
                 <div class="testimonial-card">
-                    <img src="/api/placeholder/100/100" alt="Athlete Testimonial">
+                    <img src="{% static 'images/f1.jpg' %}" alt="Athletes Connecting">
                     <blockquote>
                         "SportHive has transformed my athletic journey and connected me with amazing opportunities."
                     </blockquote>
                     <div class="rating">★★★★★</div>
                 </div>
                 <div class="testimonial-card">
-                    <img src="/api/placeholder/100/100" alt="Another Athlete Testimonial">
+                    <img src="{% static 'images/m1.webp' %}" alt="Athletes Connecting">
                     <blockquote>
                         "The platform's community and resources have been incredible for my personal growth."
                     </blockquote>
