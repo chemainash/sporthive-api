@@ -3,22 +3,36 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 def index(request):
     return render(request, 'index.html')
 
-
 def login_view(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
         user = authenticate(request, username=username, password=password)
+
         if user is not None:
             login(request, user)
-            return redirect('index')  # Change 'home' to your desired redirect page
+
+            # Redirect based on user type
+            if user.user_type == "athlete":
+                return redirect("athlete-dashboard")
+            elif user.user_type == "coach":  # Assuming "provider" means doctor
+                return redirect("coach-dashboard")
+            elif user.is_superuser:
+                return redirect("admin-dashboard")
+            else:
+                messages.error(request, "Unauthorized access")
+                return redirect("index")  
+
         else:
-            return render(request, 'login.html', {'error': 'Invalid username or password'})
-    return render(request, 'login.html')
+            messages.error(request, "Invalid username or password")
+
+    return render(request, "login.html")
 
 
 @login_required
@@ -28,12 +42,6 @@ def coach_dashboard(request):
     else:
         return redirect('login')
     
-def signup_view(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import render, redirect
 
 def signup(request):
     if request.method == 'POST':

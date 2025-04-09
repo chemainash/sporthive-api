@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-import uuid
+
 
 class UserType(models.TextChoices):
     COACH = 'coach', 'Coach'
@@ -8,16 +8,14 @@ class UserType(models.TextChoices):
     ATHLETE = 'athlete', 'Athlete'
 
 class User(AbstractUser):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     age = models.IntegerField(null=True, blank=True)
     contacts = models.JSONField(null=True, blank=True)
     user_type = models.CharField(max_length=10, choices=UserType.choices, default=UserType.ATHLETE)
 
     def __str__(self):
-        return self.username
+        return f"{self.id} ({self.username})"
 
 class Team(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
     players = models.ManyToManyField(User, related_name='teams')
     individual_player = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='individual_teams')
@@ -32,7 +30,6 @@ class AvailabilityStatus(models.TextChoices):
     UNAVAILABLE = 'unavailable', 'Unavailable'
 
 class Facility(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
     availability_status = models.CharField(max_length=12, choices=AvailabilityStatus.choices)
@@ -44,7 +41,6 @@ class Facility(models.Model):
 
 
 class Event(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
     facility = models.ForeignKey(Facility, on_delete=models.CASCADE, related_name='events')
     date = models.DateTimeField()
@@ -55,7 +51,6 @@ class Event(models.Model):
         return self.name
 
 class Fixture(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='fixtures')
     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='fixtures')
     date = models.DateTimeField()
@@ -70,7 +65,6 @@ class Outcome(models.TextChoices):
     LOSS = 'loss', 'Loss'
 
 class Result(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='results')
     outcome = models.CharField(max_length=10, choices=Outcome.choices)
     rank = models.IntegerField()
@@ -86,7 +80,6 @@ class NotificationChannel(models.TextChoices):
     SMS = 'sms', 'SMS'
 
 class Notification(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     channel = models.CharField(max_length=10, choices=NotificationChannel.choices)
     subject = models.CharField(max_length=255)
     message = models.TextField()

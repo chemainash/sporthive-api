@@ -13,14 +13,20 @@
             <div class="logo">
                 <h1>SportHive</h1>
             </div>
-            <form id="login-form" method="POST" action="{% url 'login' %}">
-                {% csrf_token %}
+            <form  method="POST">
+               
                 <h2>Welcome Back</h2>
                 <p>Login to continue your athletic journey</p>
                 
-                {% if error %}
-                    <p class="error-message">{{ error }}</p>
-                {% endif %}
+                <!-- Django Messages for Errors -->
+            {% if messages %}
+            {% for message in messages %}
+            <p style="color: red;">{{ message }}</p>
+            {% endfor %}
+            {% endif %}
+
+            <form method="post">
+                {% csrf_token %}
                 
                 <div class="form-group">
                     <label for="username">Username</label>
@@ -71,7 +77,7 @@
                 </div>
                 
                 <div class="signup-link">
-                    <p class="auth-prompt">Don't have an account? <a href="{% url 'signup' %}" class="auth-link">Sign Up</a></p>
+                    <!-- <p class="auth-prompt">Don't have an account? <a href="{% url 'login' %}" class="auth-link">Sign Up</a></p> -->
              </div>
             </form>
         </div>
