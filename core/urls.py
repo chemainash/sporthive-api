@@ -1,5 +1,7 @@
 from django.urls import path
-from core.views import index, login_view, coach_dashboard, athlete_dashboard, event_dashboard, admin_dashboard
+from core.views import index, login_view, coach_dashboard, athlete_dashboard, event_dashboard, admin_dashboard,signup,register,community,about_us,facilities
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import views as auth_views
 from django.contrib.auth import views as auth_views
 from django.contrib.auth import views as auth_views
@@ -20,4 +22,14 @@ urlpatterns = [
     path('event/dashboard/', login_required(event_dashboard), name='event-dashboard'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('admin/dashboard/', login_required(admin_dashboard), name='admin-dashboard'),
+    path('signup/', signup, name='signup'),
+    path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
+    path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
+    path('register/', register, name='register'),
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+    path('community/', community, name='community'),
+    path('about/us/', about_us, name='about-us'),
+    path('facilities/', facilities, name='facilities'),
+    
 ]

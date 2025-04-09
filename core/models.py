@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-
+import uuid
 
 class UserType(models.TextChoices):
     COACH = 'coach', 'Coach'

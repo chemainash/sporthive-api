@@ -2,127 +2,294 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SportHive - Where Passion Meets Performance</title>
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SportHive - Where Passion Meets Performance</title>
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">SportHive</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#sports">Sports</a></li>
-                <li><a href="event_dashboard">Events</a></li>
-                <li><a href="#community">Community</a></li>
-                <li><a href="login" class="cta-button">Login</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Header Navigation -->
+  <header class="header">
+    <div class="container header-container">
+      <div class="logo">
+        <img src="{% static 'images/log.jpg' %}" alt="SportHive Logo">
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="about/us">About Us</a></li>
+          <li><a href="/facilities/">Facilities</a></li>
+          <li><a href="/event/dashboard/">Events</a></li>
+          <li><a href="/community/">Community</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="cta-button">
+        <a href="{% url 'login' %}"class="btn primary-btn">Login</a>
+      </div>
+    </div>
+  </header>
 
-    <main>
-        <section id="hero">
-            <div class="hero-content">
-                <h1>Where Passion Meets Performance and Players Thrive</h1>
-                <p>We are driven by a deep passion for sports and a commitment to empowering athletes of all levels.</p>
-                <a href="#sports" class="cta-button">Explore Sports</a>
-            </div>
-            <div class="hero-images">
-                <img src="{% static 'images/athletes.jpg' %}" alt="Athletes Connecting">
-            </div>
-        </section>
-
-        <section id="sports-overview">
-            <h2>One Platform for Every Sport</h2>
-            <div class="sports-grid">
-                <div class="sport-card">
-                    <img src="{% static 'images/volleyball.jpg' %}" alt="Athletes Connecting">
-                    <h3>Volleyball</h3>
-                </div>
-                <div class="sport-card">
-                    <img src="{% static 'images/pool.jpg' %}" alt="Athletes Connecting">
-                    <h3>Swimming</h3>
-                </div>
-                <div class="sport-card">
-                    <img src="{% static 'images/court.jpg' %}" alt="Athletes Connecting">
-                    <h3>Tennis</h3>
-                </div>
-                <div class="sport-card">
-                    <img src="{% static 'images/track.jpg' %}" alt="Athletes Connecting">
-                    <h3>Track</h3>
-                </div>
-            </div>
-        </section>
-
-        <section id="featured-events">
-            <h2>Upcoming Events</h2>
-            <div class="events-container">
-                <div class="event-card">
-                    <img src="/api/placeholder/400/250" alt="Tennis Event">
-                    <h3>Tennis Open Championships</h3>
-                    <p>Challenge Yourself, Compete with the Best</p>
-                    <a href="#" class="event-link">Learn More</a>
-                </div>
-                <div class="event-card">
-                    <img src="/api/placeholder/400/250" alt="Match with Taufiq">
-                    <h3>Fun Match With Taufiq Hidayat</h3>
-                    <p>Join an exclusive event with a sports legend</p>
-                    <a href="#" class="event-link">Register Now</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="testimonials">
-            <h2>Real Stories, Real Experiences</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <img src="{% static 'images/f1.jpg' %}" alt="Athletes Connecting">
-                    <blockquote>
-                        "SportHive has transformed my athletic journey and connected me with amazing opportunities."
-                    </blockquote>
-                    <div class="rating">★★★★★</div>
-                </div>
-                <div class="testimonial-card">
-                    <img src="{% static 'images/m1.webp' %}" alt="Athletes Connecting">
-                    <blockquote>
-                        "The platform's community and resources have been incredible for my personal growth."
-                    </blockquote>
-                    <div class="rating">★★★★★</div>
-                </div>
-            </div>
-        </section>
-
-        <section id="community-signup">
-            <div class="signup-content">
-                <h2>Join the SportHive Movement</h2>
-                <p>Elevate Your Game and Connect with Athletes!</p>
-                <form class="signup-form">
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit" class="cta-button">Get Started</button>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">SportHive</div>
-            <div class="footer-links">
-                <a href="#">About</a>
-                <a href="#">Sports</a>
-                <a href="#">Events</a>
-                <a href="#">Community</a>
-            </div>
-            <div class="social-links">
-                <a href="#">Facebook</a>
-                <a href="#">Twitter</a>
-                <a href="#">Instagram</a>
-            </div>
-            <p>&copy; 2025 SportHive. All Rights Reserved.</p>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Where Passion Meets Performance and Players Thrive</h1>
+        <p>Join our community of athletes and take your game to the next level</p>
+        <div class="hero-cta">
+          <a href="{% url 'signup' %} class=" class="btn secondary-btn">Let's Go!</a>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <script src="{% static 'javascript/index.js' %}"></script>
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-header">
+        <h5>Our Value</h5>
+        <div class="year">2024</div>
+      </div>
+      <div class="about-content">
+        <h2>We are driven by a deep passion for sports and a commitment to empowering athletes of all levels.</h2>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-image">
+            <img src="{% static 'images/volleyball-p.jpg' %}" alt="Volleyball Players">
+          </div>
+          <div class="feature-text">
+            <h3>Connect with athletes worldwide</h3>
+            <p>Join our global network of sports enthusiasts</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-image">
+            <img src="{% static 'images/basketball-p.jpg' %}" alt="Basketball Players">
+          </div>
+          <div class="feature-text">
+            <h3>Train with professional coaches</h3>
+            <p>Access exclusive training programs</p>
+          </div>
+        </div>
+        <div class="feature-card highlight">
+          <div class="feature-text light">
+            <h3>We promote integrity and sportsmanship in competition and beyond</h3>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-image">
+            <img src="{% static 'images/tennis-p.jpg' %}"alt="Tennis Player">
+          </div>
+          <div class="feature-text">
+            <h3>Compete in tournaments</h3>
+            <p>Test your skills against the best</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Events Section -->
+  <section class="featured-events" id="events">
+    <div class="container">
+      <h2 class="section-title">Featured Events</h2>
+      <div class="event-headline">
+        <h2>Challenge Yourself, Compete with the Best, and Take Your Game to the Next Level</h2>
+      </div>
+
+      <div class="event-card">
+        <div class="event-profile">
+          <img src="/api/placeholder/50/50" alt="Taufiq Hidayat" class="profile-pic">
+          <div class="profile-info">
+            <h4>Match With Taufiq Hidayat</h4>
+            <p>Taufiq Hidayat is a BWF World Championship Winner • Professional Badminton Player</p>
+          </div>
+        </div>
+        <div class="event-details">
+          <div class="event-meta">
+            <div class="date-time">
+              <h5>DATE & TIME</h5>
+              <p>December 28, 2024</p>
+              <p>Wednesday 2:00 PM - 5:00 PM</p>
+              <a href="#" class="join-btn">Join Here</a>
+            </div>
+            <div class="location">
+              <h5>LOCATION</h5>
+              <div class="location-map">
+                <img src="/api/placeholder/150/100" alt="Event Location Map">
+              </div>
+            </div>
+          </div>
+
+          <div class="event-banner">
+            <img src="/api/placeholder/280/180" alt="Tennis Open Championship">
+            <div class="banner-text">
+              <h3>Tennis Open Championship</h3>
+              <p>Register now and showcase your tennis skills</p>
+              <a href="#" class="register-link">Register Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sports Categories Section -->
+  <section class="sports-categories" id="sports">
+    <div class="container">
+      <div class="section-header">
+        <h2>Explore Our Sports</h2>
+        <a href="#" class="view-more">Let's Join In</a>
+      </div>
+      <h2 class="section-title">One Platform for Every Sport</h2>
+      
+      <div class="search-bar">
+        <input type="text" placeholder="Search your desired sports...">
+        <button><i class="fas fa-search"></i></button>
+      </div>
+
+      <div class="categories-grid">
+        <div class="category-card basketball">
+          <h3>Basketball</h3>
+          <div class="category-info">
+            <span class="players">25K Players</span>
+            <span class="sessions">50+ Sessions</span>
+          </div>
+        </div>
+        <div class="category-card swimming">
+          <h3>Swimming</h3>
+          <div class="category-info">
+            <span class="players">15K Players</span>
+            <span class="sessions">30+ Sessions</span>
+          </div>
+        </div>
+        <div class="category-card climbing">
+          <h3>Golfing</h3>
+          <div class="category-info">
+            <span class="players">10K Players</span>
+            <span class="sessions">20+ Sessions</span>
+          </div>
+        </div>
+        <div class="category-card running">
+          <h3>Track and Field</h3>
+          <div class="category-info">
+            <span class="players">18K Players</span>
+            <span class="sessions">40+ Sessions</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials" id="testimonial">
+    <div class="container">
+      <h2 class="section-title">Real Stories, Real Experiences, and the Impact SportHive Has Had on Their Game</h2>
+      
+      <div class="testimonial-slider">
+        <div class="testimonial-card">
+          <img src="/api/placeholder/320/200" alt="Baseball Player" class="testimonial-image">
+          <div class="testimonial-content">
+            <div class="testimonial-text">
+              <p>"SportHive has completely changed the way I approach training. The coaches here have helped me improve my technique and become a better player."</p>
+              <div class="rating">★★★★★</div>
+            </div>
+            <div class="testimonial-author">
+              <img src="{% static 'images/trainer 1.webp' %}" alt="User Avatar" class="author-avatar">
+              <div class="author-info">
+                <h4>Michael Roberts</h4>
+                <p>College Baseball Player</p>
+              </div>
+            </div>
+          </div>
+          <div class="navigation-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community Section -->
+  <section class="community">
+    <div class="container">
+      <div class="community-card">
+        <div class="community-image">
+          <img src="/api/placeholder/400/300" alt="Sports Team">
+        </div>
+        <div class="community-content">
+          <h2>Join the SportHive Movement — Elevate Your Game and Connect with Athletes!</h2>
+          <p>Train with skilled athletes, join our events and get the connections you need to step up your game and playing with SportHive!</p>
+          <div class="community-cta">
+            <a href="#" class="btn outline-btn">Sign up for Free Account</a>
+            <a href="#" class="btn primary-btn">Download Mobile App</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="/api/placeholder/150/40" alt="SportHive Logo">
+          <p>Where Passion Meets Performance and Players Thrive</p>
+        </div>
+        
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Explore Sport</h4>
+            <ul>
+              <li><a href="#">Basketball</a></li>
+              <li><a href="#">Football</a></li>
+              <li><a href="#">Swimming</a></li>
+              <li><a href="#">Rock Climbing</a></li>
+              <li><a href="#">Running</a></li>
+              <li><a href="#">Badminton</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h4>About Us</h4>
+            <ul>
+              <li><a href="#">Our Vision</a></li>
+              <li><a href="#">Team</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h4>Quick Menu</h4>
+            <ul class="tag-menu">
+              <li><a href="#" class="tag">Events</a></li>
+              <li><a href="#" class="tag">Coaching</a></li>
+              <li><a href="#" class="tag">Tournaments</a></li>
+              <li><a href="#" class="tag">Community</a></li>
+              <li><a href="#" class="tag">Training</a></li>
+              <li><a href="#" class="tag">Resources</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2024 SportHive</p>
+        <div class="footer-legal">
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{% static 'javascript/index.js' %}"></script> 
 </body>
 </html>

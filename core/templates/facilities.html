@@ -1,0 +1,179 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportsHive Facility </title>
+    <link rel="stylesheet" href="{% static 'css/facilities.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="{% static 'images/log.jpg' %}" alt="SportHive Logo">
+                    SportHive's Facilities
+                </div>
+                <div class="nav-links">
+                    <a href="#">Dashboard</a>
+                    <a href="#">Facilities</a>
+                    <a href="#">Bookings</a>
+                    <a href="#">Calendar</a>
+                    <a href="#">Reports</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="dashboard-header">
+            <h1 class="dashboard-title">Sports Facilities Dashboard</h1>
+            <p class="dashboard-subtitle">Manage your sports facilities, track bookings, and optimize utilization</p>
+            
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-value">24</div>
+                    <div class="stat-label">Active Facilities</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">142</div>
+                    <div class="stat-label">Bookings This Week</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">87%</div>
+                    <div class="stat-label">Capacity Utilization</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">$12,480</div>
+                    <div class="stat-label">Revenue This Month</div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Popular Facilities</h2>
+        <div class="facilities-grid">
+            <div class="facility-card">
+                <img src="/api/placeholder/400/180" alt="Basketball Court" class="facility-image">
+                <div class="facility-info">
+                    <div class="facility-type">Basketball</div>
+                    <h3 class="facility-name">Central Indoor Court</h3>
+                    <p>Professional indoor basketball court with seating for spectators and competition-grade flooring.</p>
+                    <div class="facility-meta">
+                        <div class="facility-rating">
+                            <span class="star-icon">★</span>
+                            <span>4.8</span>
+                        </div>
+                        <div>89% Booked</div>
+                    </div>
+                </div>
+            </div>
+            <div class="facility-card">
+                <img src="/api/placeholder/400/180" alt="Tennis Court" class="facility-image">
+                <div class="facility-info">
+                    <div class="facility-type">Tennis</div>
+                    <h3 class="facility-name">Eastside Tennis Complex</h3>
+                    <p>Six professional hard courts with lighting for evening play and tournament capabilities.</p>
+                    <div class="facility-meta">
+                        <div class="facility-rating">
+                            <span class="star-icon">★</span>
+                            <span>4.6</span>
+                        </div>
+                        <div>76% Booked</div>
+                    </div>
+                </div>
+            </div>
+            <div class="facility-card">
+                <img src="/api/placeholder/400/180" alt="Swimming Pool" class="facility-image">
+                <div class="facility-info">
+                    <div class="facility-type">Swimming</div>
+                    <h3 class="facility-name">Olympic Indoor Pool</h3>
+                    <p>Olympic-sized indoor swimming pool with 8 lanes, diving area, and temperature control.</p>
+                    <div class="facility-meta">
+                        <div class="facility-rating">
+                            <span class="star-icon">★</span>
+                            <span>4.9</span>
+                        </div>
+                        <div>92% Booked</div>
+                    </div>
+                </div>
+            </div>
+            <div class="facility-card">
+                <img src="/api/placeholder/400/180" alt="Soccer Field" class="facility-image">
+                <div class="facility-info">
+                    <div class="facility-type">Soccer</div>
+                    <h3 class="facility-name">Westfield Soccer Grounds</h3>
+                    <p>Full-sized soccer field with artificial turf, floodlights and changing facilities.</p>
+                    <div class="facility-meta">
+                        <div class="facility-rating">
+                            <span class="star-icon">★</span>
+                            <span>4.5</span>
+                        </div>
+                        <div>81% Booked</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Recent Bookings</h2>
+        <table class="bookings-table">
+            <thead>
+                <tr>
+                    <th>Facility</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Booked By</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Central Indoor Court</td>
+                    <td>April 08, 2025</td>
+                    <td>2:00 PM - 4:00 PM</td>
+                    <td>City Basketball League</td>
+                    <td><span class="status-badge status-confirmed">Confirmed</span></td>
+                    <td><button class="action-btn">View Details</button></td>
+                </tr>
+                <tr>
+                    <td>Olympic Indoor Pool</td>
+                    <td>April 09, 2025</td>
+                    <td>7:00 AM - 9:00 AM</td>
+                    <td>Swim Sharks Club</td>
+                    <td><span class="status-badge status-confirmed">Confirmed</span></td>
+                    <td><button class="action-btn">View Details</button></td>
+                </tr>
+                <tr>
+                    <td>Eastside Tennis Complex</td>
+                    <td>April 10, 2025</td>
+                    <td>5:30 PM - 7:30 PM</td>
+                    <td>John Smith</td>
+                    <td><span class="status-badge status-pending">Pending</span></td>
+                    <td><button class="action-btn">View Details</button></td>
+                </tr>
+                <tr>
+                    <td>Westfield Soccer Grounds</td>
+                    <td>April 11, 2025</td>
+                    <td>9:00 AM - 12:00 PM</td>
+                    <td>Youth Soccer Association</td>
+                    <td><span class="status-badge status-cancelled">Cancelled</span></td>
+                    <td><button class="action-btn">View Details</button></td>
+                </tr>
+                <tr>
+                    <td>Central Indoor Court</td>
+                    <td>April 12, 2025</td>
+                    <td>6:00 PM - 8:00 PM</td>
+                    <td>Corporate League</td>
+                    <td><span class="status-badge status-confirmed">Confirmed</span></td>
+                    <td><button class="action-btn">View Details</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <script src="{% static 'javascript/facilities.js' %}"></script> 
+</body>
+</html>

@@ -1,369 +1,174 @@
-// Wait for DOM to be fully loaded
+// Toggle sidebar functionality
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize charts
-    initUserGrowthChart();
-    initSportDistributionChart();
+    const toggleBtn = document.getElementById('toggle-sidebar');
+    const sidebar = document.querySelector('.sidebar');
     
-    // Initialize event listeners
-    initEventListeners();
+    if (toggleBtn && sidebar) {
+        toggleBtn.addEventListener('click', function() {
+            sidebar.classList.toggle('collapsed');
+        });
+    }
+    
+    // Simulated chart data for user activity
+    renderActivityChart();
+    
+    // Simulated chart data for sport distribution
+    renderSportDistribution();
 });
 
-// Function to initialize user growth chart
-function initUserGrowthChart() {
-    const ctx = document.getElementById('userGrowthChart').getContext('2d');
+// Render Activity Chart (simple placeholder)
+function renderActivityChart() {
+    const activityChart = document.getElementById('activity-chart');
     
-    // Sample data for user growth
-    const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    const data = {
-        labels: labels,
-        datasets: [{
-            label: 'New Users',
-            data: [1250, 1450, 1320, 1850, 2100, 2400, 2300, 2600, 2850, 3100, 3400, 3620],
-            backgroundColor: 'rgba(52, 152, 219, 0.2)',
-            borderColor: 'rgba(52, 152, 219, 1)',
-            borderWidth: 2,
-            tension: 0.4,
-            fill: true,
-            pointBackgroundColor: '#fff',
-            pointBorderColor: 'rgba(52, 152, 219, 1)',
-            pointRadius: 4
-        }, {
-            label: 'Active Users',
-            data: [5200, 5800, 6100, 6700, 7200, 7800, 8300, 9000, 9500, 10200, 11000, 12000],
-            backgroundColor: 'rgba(46, 204, 113, 0.2)',
-            borderColor: 'rgba(46, 204, 113, 1)',
-            borderWidth: 2,
-            tension: 0.4,
-            fill: true,
-            pointBackgroundColor: '#fff',
-            pointBorderColor: 'rgba(46, 204, 113, 1)',
-            pointRadius: 4
-        }]
-    };
-
-    const config = {
-        type: 'line',
-        data: data,
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    position: 'top',
-                },
-                tooltip: {
-                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                    padding: 10,
-                    cornerRadius: 6,
-                    titleFont: {
-                        size: 14,
-                        weight: 'bold'
-                    },
-                    bodyFont: {
-                        size: 13
-                    }
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    grid: {
-                        color: 'rgba(0, 0, 0, 0.05)'
-                    }
-                },
-                x: {
-                    grid: {
-                        display: false
-                    }
-                }
-            }
-        }
-    };
-
-    const userGrowthChart = new Chart(ctx, config);
-
-    // Handle chart period buttons
-    const chartButtons = document.querySelectorAll('.chart-container:first-child .btn-chart');
-    chartButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            chartButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Here you would update the chart data based on the selected period
-            // For demonstration, we'll just simulate a data update
-            if (this.textContent === 'Weekly') {
-                userGrowthChart.data.datasets[0].data = [320, 420, 510, 790, 940, 1050, 980, 1120, 1250, 1380, 1520, 1620];
-                userGrowthChart.data.datasets[1].data = [1250, 1380, 1520, 1700, 1900, 2050, 2180, 2300, 2450, 2600, 2750, 2900];
-            } else if (this.textContent === 'Monthly') {
-                userGrowthChart.data.datasets[0].data = [1250, 1450, 1320, 1850, 2100, 2400, 2300, 2600, 2850, 3100, 3400, 3620];
-                userGrowthChart.data.datasets[1].data = [5200, 5800, 6100, 6700, 7200, 7800, 8300, 9000, 9500, 10200, 11000, 12000];
-            } else if (this.textContent === 'Yearly') {
-                userGrowthChart.data.datasets[0].data = [8520, 10450, 12800, 15400, 18700, 22500, 26300, 31000, 35500, 39200, 42500, 45800];
-                userGrowthChart.data.datasets[1].data = [32000, 38000, 45000, 52000, 60000, 68000, 75000, 82000, 88000, 94000, 100000, 112000];
-            }
-            userGrowthChart.update();
-        });
-    });
-}
-
-// Function to initialize sport distribution chart
-function initSportDistributionChart() {
-    const ctx = document.getElementById('sportDistributionChart').getContext('2d');
-    
-    // Sample data for sport distribution
-    const data = {
-        labels: ['Basketball', 'Soccer', 'Tennis', 'Swimming', 'Volleyball', 'Cricket', 'Baseball'],
-        datasets: [{
-            label: 'Number of Players',
-            data: [3245, 2876, 1987, 1542, 1285, 1120, 940],
-            backgroundColor: [
-                'rgba(231, 76, 60, 0.8)',
-                'rgba(52, 152, 219, 0.8)',
-                'rgba(46, 204, 113, 0.8)',
-                'rgba(155, 89, 182, 0.8)',
-                'rgba(241, 196, 15, 0.8)',
-                'rgba(230, 126, 34, 0.8)',
-                'rgba(149, 165, 166, 0.8)'
-            ],
-            borderColor: '#fff',
-            borderWidth: 2
-        }]
-    };
-
-    const config = {
-        type: 'doughnut',
-        data: data,
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    position: 'right',
-                    labels: {
-                        padding: 20,
-                        boxWidth: 15,
-                        font: {
-                            size: 12
-                        }
-                    }
-                },
-                tooltip: {
-                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                    padding: 10,
-                    cornerRadius: 6,
-                    callbacks: {
-                        label: function(context) {
-                            const label = context.label || '';
-                            const value = context.formattedValue;
-                            const dataset = context.dataset;
-                            const total = dataset.data.reduce((acc, data) => acc + data, 0);
-                            const percentage = Math.round((context.raw / total) * 100);
-                            return `${label}: ${value} (${percentage}%)`;
-                        }
-                    }
-                }
-            },
-            cutout: '65%'
-        }
-    };
-
-    const sportDistributionChart = new Chart(ctx, config);
-
-    // Handle chart filter buttons
-    const chartButtons = document.querySelectorAll('.chart-container:nth-child(2) .btn-chart');
-    chartButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            chartButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Here you would update the chart data based on the selected filter
-            // For demonstration, we'll just simulate a data update
-            if (this.textContent === 'All Sports') {
-                sportDistributionChart.data.labels = ['Basketball', 'Soccer', 'Tennis', 'Swimming', 'Volleyball', 'Cricket', 'Baseball'];
-                sportDistributionChart.data.datasets[0].data = [3245, 2876, 1987, 1542, 1285, 1120, 940];
-            } else if (this.textContent === 'Top 5') {
-                sportDistributionChart.data.labels = ['Basketball', 'Soccer', 'Tennis', 'Swimming', 'Volleyball'];
-                sportDistributionChart.data.datasets[0].data = [3245, 2876, 1987, 1542, 1285];
-            }
-            sportDistributionChart.update();
-        });
-    });
-}
-
-// Function to initialize event listeners
-function initEventListeners() {
-    // Notifications dropdown
-    const notifications = document.querySelector('.notifications');
-    notifications && notifications.addEventListener('click', function() {
-        // Toggle notifications dropdown
-        console.log('Notifications clicked');
-        // Implement dropdown functionality here
-    });
-    
-    // Messages dropdown
-    const messages = document.querySelector('.messages');
-    messages && messages.addEventListener('click', function() {
-        // Toggle messages dropdown
-        console.log('Messages clicked');
-        // Implement dropdown functionality here
-    });
-    
-    // Admin dropdown
-    const adminDropdown = document.querySelector('.admin-dropdown');
-    adminDropdown && adminDropdown.addEventListener('click', function() {
-        // Toggle admin dropdown
-        console.log('Admin dropdown clicked');
-        // Implement dropdown functionality here
-    });
-    
-    // Filter button
-    const filterBtn = document.querySelector('.btn-filter');
-    filterBtn && filterBtn.addEventListener('click', function() {
-        // Show date filter picker
-        console.log('Filter button clicked');
-        // Implement date picker functionality here
-    });
-    
-    // View all buttons
-    const viewAllButtons = document.querySelectorAll('.view-all');
-    viewAllButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            const section = this.closest('.section-header').querySelector('h2').textContent;
-            console.log(`View all clicked for ${section}`);
-            // Implement view all functionality here
-        });
-    });
-    
-    // Responsive sidebar toggle for mobile
-    const sidebarToggle = document.createElement('button');
-    sidebarToggle.classList.add('sidebar-toggle');
-    sidebarToggle.innerHTML = '<i class="fas fa-bars"></i>';
-    document.querySelector('.main-header').prepend(sidebarToggle);
-    
-    sidebarToggle.addEventListener('click', function() {
-        const sidebar = document.querySelector('.sidebar');
-        sidebar.classList.toggle('show-sidebar');
-    });
-    
-    // Add mobile styles
-    const style = document.createElement('style');
-    style.textContent = `
-        @media (max-width: 768px) {
-            .sidebar-toggle {
-                display: block;
-                background: none;
-                border: none;
-                font-size: 1.2rem;
-                cursor: pointer;
-                margin-right: 15px;
-            }
-            
-            .sidebar {
-                transform: translateX(-100%);
-                transition: transform 0.3s ease;
-            }
-            
-            .sidebar.show-sidebar {
-                transform: translateX(0);
-            }
-        }
-        
-        @media (min-width: 769px) {
-            .sidebar-toggle {
-                display: none;
-            }
-        }
-    `;
-    document.head.appendChild(style);
-    
-    // Handle window resize
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
-            const sidebar = document.querySelector('.sidebar');
-            sidebar.classList.remove('show-sidebar');
-        }
-    });
-}
-
-// Simulating real-time data updates
-function simulateRealTimeUpdates() {
-    // Update random stats every 30 seconds
-    setInterval(function() {
-        const statValues = document.querySelectorAll('.stat-info h3');
-        const randomIndex = Math.floor(Math.random() * statValues.length);
-        const statValue = statValues[randomIndex];
-        const currentValue = parseInt(statValue.textContent.replace(/,/g, '').replace('$', ''));
-        
-        // Generate a random increase
-        const increase = Math.floor(Math.random() * 50) + 1;
-        const newValue = currentValue + increase;
-        
-        // Format the value properly
-        if (statValue.textContent.includes('$')) {
-            statValue.textContent = '$' + newValue.toLocaleString();
-        } else {
-            statValue.textContent = newValue.toLocaleString();
-        }
-        
-        // Flash animation to indicate update
-        statValue.style.animation = 'flash 1s';
-        setTimeout(() => {
-            statValue.style.animation = '';
-        }, 1000);
-    }, 30000);
-    
-    // Add new activity every 45 seconds
-    setInterval(function() {
-        const activityList = document.querySelector('.activity-list');
-        if (!activityList) return;
-        
-        const activities = [
-            {
-                icon: 'user-plus',
-                text: '<strong>Emma Wilson</strong> registered for <strong>Swimming Competition</strong>',
-                time: 'Just now'
-            },
-            {
-                icon: 'comment',
-                text: '<strong>Michael Brown</strong> left a review on <strong>Soccer League</strong>',
-                time: 'Just now'
-            },
-            {
-                icon: 'trophy',
-                text: '<strong>Boston Eagles</strong> won the <strong>Regional Basketball Tournament</strong>',
-                time: 'Just now'
-            }
-        ];
-        
-        const randomActivity = activities[Math.floor(Math.random() * activities.length)];
-        
-        // Create new activity element
-        const newActivity = document.createElement('div');
-        newActivity.className = 'activity-item';
-        newActivity.innerHTML = `
-            <div class="activity-icon">
-                <i class="fas fa-${randomActivity.icon}"></i>
-            </div>
-            <div class="activity-details">
-                <p class="activity-text">${randomActivity.text}</p>
-                <p class="activity-time">${randomActivity.time}</p>
+    if (activityChart) {
+        // In a real application, you would use a charting library like Chart.js
+        // This is a placeholder to represent what the chart would look like
+        activityChart.innerHTML = `
+            <div style="width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <svg width="80%" height="80%" viewBox="0 0 300 200">
+                    <!-- Chart grid lines -->
+                    <line x1="50" y1="180" x2="280" y2="180" stroke="#e1e4e8" stroke-width="1" />
+                    <line x1="50" y1="140" x2="280" y2="140" stroke="#e1e4e8" stroke-width="1" />
+                    <line x1="50" y1="100" x2="280" y2="100" stroke="#e1e4e8" stroke-width="1" />
+                    <line x1="50" y1="60" x2="280" y2="60" stroke="#e1e4e8" stroke-width="1" />
+                    <line x1="50" y1="20" x2="280" y2="20" stroke="#e1e4e8" stroke-width="1" />
+                    
+                    <!-- Y-axis labels -->
+                    <text x="40" y="180" text-anchor="end" font-size="10" fill="#6c757d">0</text>
+                    <text x="40" y="140" text-anchor="end" font-size="10" fill="#6c757d">100</text>
+                    <text x="40" y="100" text-anchor="end" font-size="10" fill="#6c757d">200</text>
+                    <text x="40" y="60" text-anchor="end" font-size="10" fill="#6c757d">300</text>
+                    <text x="40" y="20" text-anchor="end" font-size="10" fill="#6c757d">400</text>
+                    
+                    <!-- X-axis labels -->
+                    <text x="50" y="195" text-anchor="middle" font-size="10" fill="#6c757d">Mon</text>
+                    <text x="88" y="195" text-anchor="middle" font-size="10" fill="#6c757d">Tue</text>
+                    <text x="126" y="195" text-anchor="middle" font-size="10" fill="#6c757d">Wed</text>
+                    <text x="164" y="195" text-anchor="middle" font-size="10" fill="#6c757d">Thu</text>
+                    <text x="202" y="195" text-anchor="middle" font-size="10" fill="#6c757d">Fri</text>
+                    <text x="240" y="195" text-anchor="middle" font-size="10" fill="#6c757d">Sat</text>
+                    <text x="278" y="195" text-anchor="middle" font-size="10" fill="#6c757d">Sun</text>
+                    
+                    <!-- Line chart for users -->
+                    <polyline 
+                        points="50,120 88,100 126,150 164,80 202,60 240,90 278,30" 
+                        fill="none" 
+                        stroke="#4a90e2" 
+                        stroke-width="2"
+                    />
+                    
+                    <!-- Data points -->
+                    <circle cx="50" cy="120" r="4" fill="#4a90e2" />
+                    <circle cx="88" cy="100" r="4" fill="#4a90e2" />
+                    <circle cx="126" cy="150" r="4" fill="#4a90e2" />
+                    <circle cx="164" cy="80" r="4" fill="#4a90e2" />
+                    <circle cx="202" cy="60" r="4" fill="#4a90e2" />
+                    <circle cx="240" cy="90" r="4" fill="#4a90e2" />
+                    <circle cx="278" cy="30" r="4" fill="#4a90e2" />
+                </svg>
+                <div style="font-size: 12px; color: #6c757d; margin-top: 10px;">Daily User Activity (Past Week)</div>
             </div>
         `;
-        
-        // Add to the list and remove the last item if more than 4
-        newActivity.style.opacity = '0';
-        activityList.prepend(newActivity);
-        setTimeout(() => {
-            newActivity.style.transition = 'opacity 0.5s';
-            newActivity.style.opacity = '1';
-        }, 100);
-        
-        if (activityList.childElementCount > 4) {
-            activityList.lastElementChild.remove();
-        }
-    }, 45000);
+    }
 }
 
-// Start simulating real-time updates
-simulateRealTimeUpdates();
+// Render Sport Distribution Chart (simple placeholder)
+function renderSportDistribution() {
+    const sportDistribution = document.getElementById('sport-distribution');
+    
+    if (sportDistribution) {
+        // In a real application, you would use a charting library like Chart.js
+        // This is a placeholder to represent what the chart would look like
+        sportDistribution.innerHTML = `
+            <div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+                <svg width="80%" height="80%" viewBox="0 0 200 200">
+                    <!-- Pie chart -->
+                    <circle cx="100" cy="100" r="80" fill="#f5f7fa" />
+                    
+                    <!-- Chart segments -->
+                    <!-- Basketball 28% -->
+                    <path d="M100,100 L100,20 A80,80 0 0,1 162.4,129.6 Z" fill="#4a90e2" />
+                    
+                    <!-- Swimming 22% -->
+                    <path d="M100,100 L162.4,129.6 A80,80 0 0,1 114.4,176.8 Z" fill="#50e3c2" />
+                    
+                    <!-- Tennis 18% -->
+                    <path d="M100,100 L114.4,176.8 A80,80 0 0,1 40.8,156 Z" fill="#f5a623" />
+                    
+                    <!-- Running 14% -->
+                    <path d="M100,100 L40.8,156 A80,80 0 0,1 22,86.4 Z" fill="#ff5252" />
+                    
+                    <!-- Others 18% -->
+                    <path d="M100,100 L22,86.4 A80,80 0 0,1 100,20 Z" fill="#9013fe" />
+                    
+                    <!-- Center circle -->
+                    <circle cx="100" cy="100" r="40" fill="white" />
+                </svg>
+            </div>
+        `;
+    }
+}
+
+// Function to handle tab switching in widgets
+function switchTab(tabContainer, activeTabIndex) {
+    const tabs = tabContainer.querySelectorAll('.btn-text');
+    tabs.forEach((tab, index) => {
+        if (index === activeTabIndex) {
+            tab.classList.add('active');
+        } else {
+            tab.classList.remove('active');
+        }
+    });
+}
+
+// Handle notifications dropdown (simplified)
+function toggleDropdown(element) {
+    const dropdown = element.nextElementSibling;
+    if (dropdown) {
+        dropdown.classList.toggle('show');
+    }
+}
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', function(event) {
+    const dropdowns = document.querySelectorAll('.dropdown-menu.show');
+    dropdowns.forEach(dropdown => {
+        if (!dropdown.previousElementSibling.contains(event.target)) {
+            dropdown.classList.remove('show');
+        }
+    });
+});
+
+// Simple data refresh animation
+function refreshData(element) {
+    element.classList.add('rotating');
+    setTimeout(() => {
+        element.classList.remove('rotating');
+        showToast('Data refreshed successfully!');
+    }, 1000);
+}
+
+// Toast notification system
+function showToast(message) {
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.innerHTML = `
+        <div class="toast-content">
+            <i class="fas fa-check-circle"></i>
+            <span>${message}</span>
+        </div>
+    `;
+    
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.classList.add('show');
+    }, 10);
+    
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => {
+            document.body.removeChild(toast);
+        }, 300);
+    }, 3000);
+}

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
+# Removed unused import of CustomUser
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -21,7 +22,7 @@ def login_view(request):
             # Redirect based on user type
             if user.user_type == "athlete":
                 return redirect("athlete-dashboard")
-            elif user.user_type == "coach":  # Assuming "provider" means doctor
+            elif user.user_type == "coach":  
                 return redirect("coach-dashboard")
             elif user.is_superuser:
                 return redirect("admin-dashboard")
@@ -60,7 +61,7 @@ def athlete_dashboard(request):
         return redirect('login')
         
 def event_dashboard(request):
-    if request.user.is_authenticated and request.user.user_type == 'event':
+    if request.user.is_authenticated and request.user.user_type == 'athlete':
         return render(request, 'event_dashboard.html')
     else:
         return redirect('login')
@@ -71,5 +72,30 @@ def admin_dashboard(request):
     else:
         return redirect('login')
     
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('event-dashboard')  # Redirect to login after signup
+    else:
+        form = UserCreationForm()
+    return render(request, 'register.html', {'form': form})
+
+def community(request):
+    if request.user.is_authenticated and request.user.user_type == 'athlete':
+        return render(request, 'community.html')
+    else:
+        return render(request, 'index.html')
+def about_us(request):
+    if request.user.is_authenticated and request.user.user_type == 'athlete':
+        return render(request, 'about_us.html')
+    else:
+        return render(request, 'index.html')
     
-    
+def facilities(request):
+    if request.user.is_authenticated and request.user.user_type == 'athlete':
+        return render(request, 'facilities.html')
+    else:
+        return render(request, 'index.html')
+

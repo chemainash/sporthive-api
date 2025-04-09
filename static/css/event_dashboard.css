@@ -107,7 +107,7 @@ button {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/api/placeholder/1600/500') center/cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/static/images/back-ground.jpg') no-repeat center center/cover;
     height: 400px;
     display: flex;
     align-items: center;

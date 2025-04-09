@@ -1,0 +1,630 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - SportHive</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #3498db;
+        }
+
+        .register-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .register-btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/static/images/background.jpg') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Mission Section */
+        .mission {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+
+        .mission-title {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 5px;
+        }
+
+        .mission-content {
+            max-width: 800px;
+        }
+
+        .mission h2 {
+            margin-bottom: 30px;
+            font-size: 32px;
+            color: #333;
+        }
+
+        .mission p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        /* Values Section */
+        .values {
+            padding: 80px 0;
+            background-color: #f5f7fa;
+        }
+
+        .values h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 32px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .value-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .value-content {
+            padding: 25px;
+        }
+
+        .value-content h3 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 22px;
+        }
+
+        .value-content p {
+            color: #666;
+        }
+
+        /* Team Section */
+        .team {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+
+        .team h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 32px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .team-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background-size: cover;
+            background-position: center;
+            border: 5px solid #f5f7fa;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-member h3 {
+            margin-bottom: 5px;
+            font-size: 20px;
+        }
+
+        .team-member p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: #3498db;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #2980b9;
+        }
+
+        /* Partners Section */
+        .partners {
+            padding: 80px 0;
+            background-color: #f5f7fa;
+            text-align: center;
+        }
+
+        .partners h2 {
+            margin-bottom: 50px;
+            font-size: 32px;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            align-items: center;
+        }
+
+        .partner-logo {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+        }
+
+        .partner-logo img {
+            max-width: 100%;
+            max-height: 60px;
+            filter: grayscale(100%);
+            transition: filter 0.3s;
+        }
+
+        .partner-logo:hover img {
+            filter: grayscale(0%);
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/400') center/cover no-repeat;
+            color: white;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo img {
+            height: 40px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #3498db;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links ul li a:hover {
+            color: #3498db;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo {
+                margin-bottom: 15px;
+            }
+
+            nav ul {
+                margin-bottom: 15px;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Where Passion Meets Performance and Players Thrive</h1>
+            <p>Empowering athletes of all levels through community, competition, and coaching</p>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission">
+        <div class="container mission-content">
+            <div class="mission-title">OUR VISION</div>
+            <h2>We are driven by a deep passion for sports and a commitment to empowering athletes of all levels.</h2>
+            <p>At SportHive, we believe that sports have the power to transform lives, build character, and create lasting communities. Our platform is designed to connect athletes with opportunities, resources, and each other, creating an ecosystem where passion meets performance and players thrive.</p>
+            <p>Founded in 2020, SportHive has grown from a small community of local sports enthusiasts to a global platform serving athletes across multiple disciplines. Our team consists of former athletes, coaches, and sports technology experts who understand the challenges and opportunities in the world of sports.</p>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values">
+        <div class="container">
+            <h2>Our Core Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-img" style="background-image: url('/api/placeholder/400/320')"></div>
+                    <div class="value-content">
+                        <h3>Excellence in Performance</h3>
+                        <p>We strive for excellence in everything we do, pushing boundaries and setting new standards for sports technology and athlete development.</p>
+                    </div>
+                </div>
+                <div class="value-card">
+                    <div class="value-img" style="background-image: url('/api/placeholder/400/320')"></div>
+                    <div class="value-content">
+                        <h3>Integrity and Sportsmanship</h3>
+                        <p>We promote integrity and sportsmanship across all levels of competition, fostering an environment of respect and fair play.</p>
+                    </div>
+                </div>
+                <div class="value-card">
+                    <div class="value-img" style="background-image: url('/api/placeholder/400/320')"></div>
+                    <div class="value-content">
+                        <h3>Inclusive Community</h3>
+                        <p>We believe in creating an inclusive sports ecosystem where athletes of all backgrounds, abilities, and levels can participate and thrive.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team">
+        <div class="container">
+            <h2>Meet Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-img" style="background-image: url('../images/sarah.jpg');"></div>
+                    <h3>Sarah Johnson</h3>
+                    <p>Founder & CEO</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-img" style="background-image: url('/api/placeholder/200/200')"></div>
+                    <h3>Michael Chen</h3>
+                    <p>Head of Technology</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-img" style="background-image: url('/api/placeholder/200/200')"></div>
+                    <h3>Taufiq Hidayat</h3>
+                    <p>Sports Director</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-img" style="background-image: url('/api/placeholder/200/200')"></div>
+                    <h3>Elena Rodriguez</h3>
+                    <p>Community Manager</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners">
+        <div class="container">
+            <h2>Our Partners</h2>
+            <div class="partners-grid">
+                <div class="partner-logo">
+                    <img src="{% static 'images/forbes.png' %}"  alt="Partner Logo">
+                </div>
+                <div class="partner-logo">
+                    <img src="/sporthive-api/static/images/nike.jpg" alt="Partner Logo">
+                </div>
+                <div class="partner-logo">
+                    <img src="/api/placeholder/150/60" alt="Partner Logo">
+                </div>
+                <div class="partner-logo">
+                    <img src="/api/placeholder/150/60" alt="Partner Logo">
+                </div>
+                <div class="partner-logo">
+                    <img src="/api/placeholder/150/60" alt="Partner Logo">
+                </div>
+                <div class="partner-logo">
+                    <img src="/api/placeholder/150/60" alt="Partner Logo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Join the SportHive Movement</h2>
+            <p>Elevate your game and connect with athletes who share your passion. Whether you're just starting out or competing at elite levels, SportHive has the tools and community to help you reach your full potential.</p>
+            <a href="{% url 'signup' %}" class="cta-button">Sign Up for Free</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <img src="/api/placeholder/150/40" alt="SportHive Logo">
+                    <p>Where Passion Meets Performance and Players Thrive</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Explore Sport</h3>
+                    <ul>
+                        <li><a href="#">Basketball</a></li>
+                        <li><a href="#">Tennis</a></li>
+                        <li><a href="#">Swimming</a></li>
+                        <li><a href="#">Rock Climbing</a></li>
+                        <li><a href="#">Running</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>About Us</h3>
+                    <ul>
+                        <li><a href="#">Our Vision</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Find Coaches</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SportHive. All Rights Reserved. | Terms & Conditions | Privacy Policy</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+                header.style.padding = '10px 0';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                header.style.padding = '15px 0';
+            }
+        });
+
+        // Active link highlighting
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.forEach(item => item.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

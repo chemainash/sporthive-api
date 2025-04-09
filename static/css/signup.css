@@ -51,6 +51,27 @@ body {
     position: relative;
 }
 
+.banner-content {
+    max-width: 80%;
+}
+
+.banner-content h2 {
+    color: var(--white);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.banner-content p {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.banner-content img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
 .logo {
     display: flex;
     align-items: center;
@@ -89,17 +110,17 @@ h2 {
     font-weight: 600;
 }
 
-.form-group input, 
+.form-group input,
 .form-group select {
     width: 100%;
-    padding: 12px 15px;
+    padding: 0.75rem 1rem;
     border: 1px solid var(--input-border);
     border-radius: 5px;
     font-size: 1rem;
     transition: border-color 0.3s;
 }
 
-.form-group input:focus, 
+.form-group input:focus,
 .form-group select:focus {
     outline: none;
     border-color: var(--primary-color);
@@ -153,7 +174,7 @@ h2 {
 
 .signup-button {
     width: 100%;
-    padding: 12px;
+    padding: 0.75rem;
     background-color: var(--primary-color);
     color: var(--white);
     border: none;
@@ -161,11 +182,17 @@ h2 {
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .signup-button:hover {
     background-color: #0069d9;
+    transform: scale(1.02);
+}
+
+.signup-button:focus {
+    outline: 2px dashed var(--primary-color);
+    outline-offset: 4px;
 }
 
 .social-signup {
@@ -197,14 +224,19 @@ h2 {
     transition: background-color 0.3s;
 }
 
+.social-button:hover {
+    background-color: #f1f1f1;
+}
+
+.social-button:focus {
+    outline: 2px dashed var(--primary-color);
+    outline-offset: 4px;
+}
+
 .social-button img {
     margin-right: 10px;
     width: 20px;
     height: 20px;
-}
-
-.social-button:hover {
-    background-color: #f1f1f1;
 }
 
 .login-link {
@@ -216,27 +248,6 @@ h2 {
     color: var(--primary-color);
     text-decoration: none;
     font-weight: 600;
-}
-
-.banner-content {
-    max-width: 80%;
-}
-
-.banner-content h2 {
-    color: var(--white);
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-.banner-content p {
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
-}
-
-.banner-content img {
-    max-width: 100%;
-    border-radius: 10px;
-    margin-top: 2rem;
 }
 
 .sport-selection {
@@ -252,7 +263,7 @@ h2 {
     border-radius: 20px;
     font-size: 0.9rem;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .sport-option:hover {
@@ -298,11 +309,11 @@ h2 {
         margin: 0;
         border-radius: 0;
     }
-    
+
     .signup-banner {
         display: none;
     }
-    
+
     .form-row {
         flex-direction: column;
         gap: 0;
@@ -313,8 +324,17 @@ h2 {
     .signup-form-container {
         padding: 2rem 1.5rem;
     }
-    
+
     .social-buttons {
         flex-direction: column;
+    }
+
+    h2,
+    .banner-content h2 {
+        font-size: 1.6rem;
+    }
+
+    .banner-content p {
+        font-size: 1rem;
     }
 }

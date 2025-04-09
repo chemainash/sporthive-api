@@ -1,0 +1,323 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportHive - Communities</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/community.css' %}">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <!-- <a href="#" class="logo"> -->
+                    <div class="logo">SportHive</div>
+                </a>
+                <div class="nav-links">
+                    <a href="#">About Us</a>
+                    <a href="#">Events</a>
+                    <a href="#">Sports</a>
+                    <a href="#">FAQ</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Communities Section --> 
+    <section class="communities-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Explore Our Sports Communities</h2>
+                <p>Find your tribe and connect with players who share your passion</p>
+            </div>
+
+            <div class="search-filter">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for communities...">
+                    <i>🔍</i>
+                </div>
+                <div class="filter-options">
+                    <select id="sort-by">
+                        <option value="popular">Most Popular</option>
+                        <option value="newest">Newest</option>
+                        <option value="activity">Most Active</option>
+                    </select>
+                    <select id="sport-type">
+                        <option value="all">All Sports</option>
+                        <option value="team">Team Sports</option>
+                        <option value="individual">Individual Sports</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="communities-grid">
+                <!-- Basketball Community -->
+                <div class="community-card">
+                    <div class="card-image basketball"></div>
+                    <div class="card-content">
+                        <h3>Basketball</h3>
+                        <div class="tags">
+                            <span class="tag">Team Sport</span>
+                            <span class="tag">Indoor</span>
+                            <span class="tag">Beginner</span>
+                        </div>
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+                                    <circle cx="9" cy="7" r="4" stroke="#666" stroke-width="2"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                                2.4K members
+                            </div>
+                            <div class="card-stat">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 20V10" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M18 14l-6-6-6 6" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Active
+                            </div>
+                        </div>
+                        <button class="join-btn">Join Community</button>
+                    </div>
+                </div>
+
+                <!-- Swimming Community -->
+                <div class="community-card">
+                    <div class="card-image swimming"></div>
+                    <div class="card-content">
+                        <h3>Swimming</h3>
+                        <div class="tags">
+                            <span class="tag">Individual</span>
+                            <span class="tag">Water</span>
+                            <span class="tag">All Levels</span>
+                        </div>
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+                                    <circle cx="9" cy="7" r="4" stroke="#666" stroke-width="2"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                                1.8K members
+                            </div>
+                            <div class="card-stat">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 20V10" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M18 14l-6-6-6 6" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Active
+                            </div>
+                        </div>
+                        <button class="join-btn">Join Community</button>
+                    </div>
+                </div>
+
+                <!-- Tennis Community -->
+                <div class="community-card">
+                    <div class="card-image tennis"></div>
+                    <div class="card-content">
+                        <h3>Tennis</h3>
+                        <div class="tags">
+                            <span class="tag">Individual</span>
+                            <span class="tag">Outdoor</span>
+                            <span class="tag">Intermediate</span>
+                        </div>
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+                                    <circle cx="9" cy="7" r="4" stroke="#666" stroke-width="2"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                                3.2K members
+                            </div>
+                            <div class="card-stat">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 20V10" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M18 14l-6-6-6 6" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Active
+                            </div>
+                        </div>
+                        <button class="join-btn">Join Community</button>
+                    </div>
+                </div>
+
+                <!-- Volleyball Community -->
+                <div class="community-card">
+                    <div class="card-image volleyball"></div>
+                    <div class="card-content">
+                        <h3>Volleyball</h3>
+                        <div class="tags">
+                            <span class="tag">Team Sport</span>
+                            <span class="tag">Indoor/Outdoor</span>
+                            <span class="tag">All Levels</span>
+                        </div>
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+                                    <circle cx="9" cy="7" r="4" stroke="#666" stroke-width="2"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                                1.5K members
+                            </div>
+                            <div class="card-stat">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 20V10" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M18 14l-6-6-6 6" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Active
+                            </div>
+                        </div>
+                        <button class="join-btn">Join Community</button>
+                    </div>
+                </div>
+
+                <!-- Soccer Community -->
+                <div class="community-card">
+                    <div class="card-image soccer"></div>
+                    <div class="card-content">
+                        <h3>Soccer</h3>
+                        <div class="tags">
+                            <span class="tag">Team Sport</span>
+                            <span class="tag">Outdoor</span>
+                            <span class="tag">All Levels</span>
+                        </div>
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+                                    <circle cx="9" cy="7" r="4" stroke="#666" stroke-width="2"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                                4.7K members
+                            </div>
+                            <div class="card-stat">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 20V10" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M18 14l-6-6-6 6" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Active
+                            </div>
+                        </div>
+                        <button class="join-btn">Join Community</button>
+                    </div>
+                </div>
+
+                <!-- Running Community -->
+                <div class="community-card">
+                    <div class="card-image running"></div>
+                    <div class="card-content">
+                        <h3>Running</h3>
+                        <div class="tags">
+                            <span class="tag">Individual</span>
+                            <span class="tag">Outdoor</span>
+                            <span class="tag">All Levels</span>
+                        </div>
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+                                    <circle cx="9" cy="7" r="4" stroke="#666" stroke-width="2"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                                2.9K members
+                            </div>
+                            <div class="card-stat">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 20V10" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M18 14l-6-6-6 6" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Active
+                            </div>
+                        </div>
+                        <button class="join-btn">Join Community</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn">4</button>
+                <button class="page-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 18l6-6-6-6" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Community -->
+    <section class="container">
+        <div class="featured-community">
+            <h2>Join the SportHive Movement – Elevate Your Game and Connect with Athletes!</h2>
+            <p>Find your next athletic adventure and connect with athletes who share your passion. Discover communities, events, and opportunities to take your sporting experience to the next level.</p>
+            <div class="cta-buttons">
+                <button class="primary-btn">Create an Account</button>
+                <button class="secondary-btn">Learn More</button>
+            </div>
+            <img src="/api/placeholder/800/400" alt="Team celebration" />
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SportHive</h3>
+                    <p>Where Passion Meets Performance and Players Thrive</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Explore Sport</h3>
+                    <ul>
+                        <li><a href="#">Basketball</a></li>
+                        <li><a href="#">Soccer</a></li>
+                        <li><a href="#">Tennis</a></li>
+                        <li><a href="#">Swimming</a></li>
+                        <li><a href="#">Running</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <ul>
+                        <li><a href="#">Our Vision</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Communities</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 SportHive. All rights reserved. | Terms & Conditions | Privacy Policy</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- <script>
+       

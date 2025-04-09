@@ -4,301 +4,362 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SportHive Admin Dashboard</title>
+    <title>PlayNexus Admin Dashboard</title>
     <link rel="stylesheet" href="{% static 'css/admin_dashboard.css' %}">
+    
 </head>
 <body>
     <div class="dashboard-container">
         <!-- Sidebar -->
         <aside class="sidebar">
-            <div class="logo">
-                <img src="/api/placeholder/120/40" alt="SportHive Logo">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-basketball-ball"></i>
+                    <span>PlayNexus</span>
+                </div>
+                <button id="toggle-sidebar" class="toggle-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
             <nav class="sidebar-nav">
                 <ul>
-                    <li class="active"><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
-                    <li><a href="#"><i class="fas fa-users"></i> Users</a></li>
-                    <li><a href="#"><i class="fas fa-calendar-alt"></i> Events</a></li>
-                    <li><a href="#"><i class="fas fa-basketball-ball"></i> Sports</a></li>
-                    <li><a href="#"><i class="fas fa-chart-line"></i> Analytics</a></li>
-                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li class="active">
+                        <a href="#"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fas fa-calendar-alt"></i> <span>Events</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fas fa-users"></i> <span>Athletes</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fas fa-volleyball-ball"></i> <span>Sports</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fas fa-ticket-alt"></i> <span>Tickets</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fas fa-chart-line"></i> <span>Analytics</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fas fa-cog"></i> <span>Settings</span></a>
+                    </li>
                 </ul>
             </nav>
             <div class="sidebar-footer">
-                <div class="admin-profile">
-                    <img src="/api/placeholder/40/40" alt="Admin Profile" class="avatar">
-                    <div class="admin-info">
-                        <p class="admin-name">Admin User</p>
-                        <p class="admin-role">Administrator</p>
-                    </div>
-                </div>
+                <a href="#"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
             </div>
         </aside>
 
         <!-- Main Content -->
         <main class="main-content">
-            <!-- Header -->
-            <header class="main-header">
-                <div class="search-box">
+            <!-- Top Navigation -->
+            <header class="top-nav">
+                <div class="search-container">
                     <i class="fas fa-search"></i>
                     <input type="text" placeholder="Search...">
                 </div>
-                <div class="header-actions">
+                <div class="nav-actions">
                     <div class="notifications">
-                        <i class="fas fa-bell"></i>
-                        <span class="notification-badge">3</span>
+                        <button class="icon-btn">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge">3</span>
+                        </button>
                     </div>
                     <div class="messages">
-                        <i class="fas fa-envelope"></i>
-                        <span class="messages-badge">5</span>
+                        <button class="icon-btn">
+                            <i class="fas fa-envelope"></i>
+                            <span class="notification-badge">5</span>
+                        </button>
                     </div>
-                    <div class="admin-dropdown">
-                        <img src="/api/placeholder/40/40" alt="Admin" class="avatar-small">
-                        <span>Admin</span>
-                        <i class="fas fa-chevron-down"></i>
+                    <div class="user-profile">
+                        <img src="/api/placeholder/40/40" alt="Admin Avatar">
+                        <div class="user-info">
+                            <p class="user-name">Admin User</p>
+                            <p class="user-role">Super Admin</p>
+                        </div>
                     </div>
                 </div>
             </header>
 
             <!-- Dashboard Content -->
             <div class="dashboard-content">
-                <div class="dashboard-header">
+                <!-- Welcome Header -->
+                <div class="welcome-header">
                     <h1>Dashboard Overview</h1>
-                    <div class="date-filter">
-                        <span>April 2, 2025</span>
-                        <button class="btn-filter"><i class="fas fa-calendar"></i> Filter</button>
-                    </div>
+                    <p>Welcome back, Admin! Here's what's happening with PlayNexus today.</p>
                 </div>
 
                 <!-- Stats Cards -->
-                <div class="stats-container">
+                <div class="stats-cards">
                     <div class="stat-card">
                         <div class="stat-icon blue">
                             <i class="fas fa-users"></i>
                         </div>
-                        <div class="stat-info">
-                            <h3>15,687</h3>
-                            <p>Total Users</p>
-                        </div>
-                        <div class="stat-change positive">
-                            <i class="fas fa-arrow-up"></i> 12.5%
+                        <div class="stat-data">
+                            <h3>Total Athletes</h3>
+                            <p class="stat-number">5,249</p>
+                            <p class="stat-trend positive"><i class="fas fa-arrow-up"></i> 12% since last month</p>
                         </div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon green">
                             <i class="fas fa-calendar-check"></i>
                         </div>
-                        <div class="stat-info">
-                            <h3>456</h3>
-                            <p>Active Events</p>
-                        </div>
-                        <div class="stat-change positive">
-                            <i class="fas fa-arrow-up"></i> 8.3%
+                        <div class="stat-data">
+                            <h3>Active Events</h3>
+                            <p class="stat-number">142</p>
+                            <p class="stat-trend positive"><i class="fas fa-arrow-up"></i> 8% since last month</p>
                         </div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon orange">
-                            <i class="fas fa-trophy"></i>
+                            <i class="fas fa-ticket-alt"></i>
                         </div>
-                        <div class="stat-info">
-                            <h3>89</h3>
-                            <p>Tournaments</p>
-                        </div>
-                        <div class="stat-change negative">
-                            <i class="fas fa-arrow-down"></i> 3.2%
+                        <div class="stat-data">
+                            <h3>Ticket Sales</h3>
+                            <p class="stat-number">$24,580</p>
+                            <p class="stat-trend positive"><i class="fas fa-arrow-up"></i> 15% since last month</p>
                         </div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon purple">
-                            <i class="fas fa-dollar-sign"></i>
+                        <div class="stat-icon red">
+                            <i class="fas fa-chart-line"></i>
                         </div>
-                        <div class="stat-info">
-                            <h3>$42,598</h3>
-                            <p>Revenue</p>
-                        </div>
-                        <div class="stat-change positive">
-                            <i class="fas fa-arrow-up"></i> 15.7%
+                        <div class="stat-data">
+                            <h3>Platform Traffic</h3>
+                            <p class="stat-number">18.4K</p>
+                            <p class="stat-trend negative"><i class="fas fa-arrow-down"></i> 3% since last month</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Charts Row -->
-                <div class="charts-row">
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h2>User Growth</h2>
-                            <div class="chart-actions">
-                                <button class="btn-chart active">Weekly</button>
-                                <button class="btn-chart">Monthly</button>
-                                <button class="btn-chart">Yearly</button>
-                            </div>
+                <!-- Dashboard Widgets -->
+                <div class="dashboard-widgets">
+                    <!-- Recent Events -->
+                    <div class="widget">
+                        <div class="widget-header">
+                            <h2>Recent Events</h2>
+                            <button class="btn-sm">View All</button>
                         </div>
-                        <div class="chart" id="userGrowthChart">
-                            <!-- Chart will be rendered here -->
+                        <div class="widget-content">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Event Name</th>
+                                        <th>Date</th>
+                                        <th>Sport</th>
+                                        <th>Location</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Tennis Open Championship</td>
+                                        <td>Dec 28, 2024</td>
+                                        <td>Tennis</td>
+                                        <td>Washington Stadium</td>
+                                        <td><span class="status upcoming">Upcoming</span></td>
+                                        <td class="actions">
+                                            <button class="icon-btn small"><i class="fas fa-eye"></i></button>
+                                            <button class="icon-btn small"><i class="fas fa-edit"></i></button>
+                                            <button class="icon-btn small"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fun Match With Taufiq Hidayat</td>
+                                        <td>Dec 20, 2024</td>
+                                        <td>Badminton</td>
+                                        <td>Central Arena</td>
+                                        <td><span class="status active">Active</span></td>
+                                        <td class="actions">
+                                            <button class="icon-btn small"><i class="fas fa-eye"></i></button>
+                                            <button class="icon-btn small"><i class="fas fa-edit"></i></button>
+                                            <button class="icon-btn small"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Basketball Finals</td>
+                                        <td>Dec 15, 2024</td>
+                                        <td>Basketball</td>
+                                        <td>City Stadium</td>
+                                        <td><span class="status completed">Completed</span></td>
+                                        <td class="actions">
+                                            <button class="icon-btn small"><i class="fas fa-eye"></i></button>
+                                            <button class="icon-btn small"><i class="fas fa-edit"></i></button>
+                                            <button class="icon-btn small"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Swimming Competition</td>
+                                        <td>Dec 10, 2024</td>
+                                        <td>Swimming</td>
+                                        <td>Olympic Pool</td>
+                                        <td><span class="status completed">Completed</span></td>
+                                        <td class="actions">
+                                            <button class="icon-btn small"><i class="fas fa-eye"></i></button>
+                                            <button class="icon-btn small"><i class="fas fa-edit"></i></button>
+                                            <button class="icon-btn small"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h2>Sport Distribution</h2>
-                            <div class="chart-actions">
-                                <button class="btn-chart active">All Sports</button>
-                                <button class="btn-chart">Top 5</button>
-                            </div>
-                        </div>
-                        <div class="chart" id="sportDistributionChart">
-                            <!-- Chart will be rendered here -->
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Recent Activities and Events -->
-                <div class="activity-events-row">
-                    <div class="recent-activities">
-                        <div class="section-header">
-                            <h2>Recent Activities</h2>
-                            <a href="#" class="view-all">View All</a>
-                        </div>
-                        <div class="activity-list">
-                            <div class="activity-item">
-                                <div class="activity-icon">
-                                    <i class="fas fa-user-plus"></i>
-                                </div>
-                                <div class="activity-details">
-                                    <p class="activity-text"><strong>John Smith</strong> registered for <strong>Tennis Open Championship</strong></p>
-                                    <p class="activity-time">10 minutes ago</p>
+                    <!-- Activity & Stats Widgets -->
+                    <div class="widgets-row">
+                        <!-- User Activity -->
+                        <div class="widget">
+                            <div class="widget-header">
+                                <h2>User Activity</h2>
+                                <div class="widget-actions">
+                                    <button class="btn-text active">Daily</button>
+                                    <button class="btn-text">Weekly</button>
+                                    <button class="btn-text">Monthly</button>
                                 </div>
                             </div>
-                            <div class="activity-item">
-                                <div class="activity-icon">
-                                    <i class="fas fa-comment"></i>
-                                </div>
-                                <div class="activity-details">
-                                    <p class="activity-text"><strong>Sarah Johnson</strong> left a review on <strong>Basketball Tournament</strong></p>
-                                    <p class="activity-time">45 minutes ago</p>
-                                </div>
-                            </div>
-                            <div class="activity-item">
-                                <div class="activity-icon">
-                                    <i class="fas fa-trophy"></i>
-                                </div>
-                                <div class="activity-details">
-                                    <p class="activity-text"><strong>Miami Sharks</strong> won the <strong>Regional Swimming Competition</strong></p>
-                                    <p class="activity-time">2 hours ago</p>
-                                </div>
-                            </div>
-                            <div class="activity-item">
-                                <div class="activity-icon">
-                                    <i class="fas fa-calendar-plus"></i>
-                                </div>
-                                <div class="activity-details">
-                                    <p class="activity-text"><strong>New Event</strong> created: <strong>Soccer League Summer 2025</strong></p>
-                                    <p class="activity-time">3 hours ago</p>
+                            <div class="widget-content">
+                                <div class="chart-container" id="activity-chart">
+                                    <!-- Chart will be rendered here via JavaScript -->
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="upcoming-events">
-                        <div class="section-header">
-                            <h2>Upcoming Events</h2>
-                            <a href="#" class="view-all">View All</a>
-                        </div>
-                        <div class="events-list">
-                            <div class="event-item">
-                                <div class="event-date">
-                                    <span class="day">15</span>
-                                    <span class="month">Apr</span>
-                                </div>
-                                <div class="event-details">
-                                    <h4>Tennis Open Championship</h4>
-                                    <p><i class="fas fa-map-marker-alt"></i> Central Tennis Court</p>
-                                    <p><i class="fas fa-users"></i> 64 Participants</p>
-                                </div>
-                                <div class="event-status">
-                                    <span class="badge badge-success">Active</span>
-                                </div>
+                        
+                        <!-- Sport Distribution -->
+                        <div class="widget">
+                            <div class="widget-header">
+                                <h2>Sport Distribution</h2>
                             </div>
-                            <div class="event-item">
-                                <div class="event-date">
-                                    <span class="day">22</span>
-                                    <span class="month">Apr</span>
+                            <div class="widget-content">
+                                <div class="chart-container" id="sport-distribution">
+                                    <!-- Chart will be rendered here via JavaScript -->
                                 </div>
-                                <div class="event-details">
-                                    <h4>Basketball Tournament</h4>
-                                    <p><i class="fas fa-map-marker-alt"></i> City Sports Arena</p>
-                                    <p><i class="fas fa-users"></i> 12 Teams</p>
-                                </div>
-                                <div class="event-status">
-                                    <span class="badge badge-warning">Registration</span>
-                                </div>
-                            </div>
-                            <div class="event-item">
-                                <div class="event-date">
-                                    <span class="day">30</span>
-                                    <span class="month">Apr</span>
-                                </div>
-                                <div class="event-details">
-                                    <h4>Swimming Competition</h4>
-                                    <p><i class="fas fa-map-marker-alt"></i> Olympic Pool</p>
-                                    <p><i class="fas fa-users"></i> 85 Participants</p>
-                                </div>
-                                <div class="event-status">
-                                    <span class="badge badge-info">Upcoming</span>
+                                <div class="sport-legend">
+                                    <div class="legend-item">
+                                        <span class="legend-color" style="background-color: #4a90e2;"></span>
+                                        <span class="legend-label">Basketball (28%)</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <span class="legend-color" style="background-color: #50e3c2;"></span>
+                                        <span class="legend-label">Swimming (22%)</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <span class="legend-color" style="background-color: #f5a623;"></span>
+                                        <span class="legend-label">Tennis (18%)</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <span class="legend-color" style="background-color: #ff5252;"></span>
+                                        <span class="legend-label">Running (14%)</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <span class="legend-color" style="background-color: #9013fe;"></span>
+                                        <span class="legend-label">Others (18%)</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Popular Sports Section -->
-                <div class="popular-sports-section">
-                    <div class="section-header">
-                        <h2>Popular Sports</h2>
-                        <a href="#" class="view-all">View All</a>
-                    </div>
-                    <div class="sports-card-container">
-                        <div class="sport-card">
-                            <div class="sport-icon basketball">
-                                <i class="fas fa-basketball-ball"></i>
+                    <!-- Recent Athletes & Reviews Widgets -->
+                    <div class="widgets-row">
+                        <!-- Recent Athletes -->
+                        <div class="widget">
+                            <div class="widget-header">
+                                <h2>Recent Athletes</h2>
+                                <button class="btn-sm">View All</button>
                             </div>
-                            <h3>Basketball</h3>
-                            <p>3,245 Players</p>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 85%;"></div>
+                            <div class="widget-content">
+                                <ul class="athlete-list">
+                                    <li class="athlete-item">
+                                        <img src="/api/placeholder/40/40" alt="Athlete">
+                                        <div class="athlete-info">
+                                            <h4>Michael Johnson</h4>
+                                            <p>Basketball</p>
+                                        </div>
+                                        <div class="athlete-status">
+                                            <span class="badge verified">Verified</span>
+                                        </div>
+                                    </li>
+                                    <li class="athlete-item">
+                                        <img src="/api/placeholder/40/40" alt="Athlete">
+                                        <div class="athlete-info">
+                                            <h4>Sarah Williams</h4>
+                                            <p>Swimming</p>
+                                        </div>
+                                        <div class="athlete-status">
+                                            <span class="badge verified">Verified</span>
+                                        </div>
+                                    </li>
+                                    <li class="athlete-item">
+                                        <img src="/api/placeholder/40/40" alt="Athlete">
+                                        <div class="athlete-info">
+                                            <h4>David Lee</h4>
+                                            <p>Tennis</p>
+                                        </div>
+                                        <div class="athlete-status">
+                                            <span class="badge pending">Pending</span>
+                                        </div>
+                                    </li>
+                                    <li class="athlete-item">
+                                        <img src="/api/placeholder/40/40" alt="Athlete">
+                                        <div class="athlete-info">
+                                            <h4>Emma Rodriguez</h4>
+                                            <p>Running</p>
+                                        </div>
+                                        <div class="athlete-status">
+                                            <span class="badge verified">Verified</span>
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
-                            <p class="growth"><i class="fas fa-arrow-up"></i> 12% growth</p>
                         </div>
-                        <div class="sport-card">
-                            <div class="sport-icon soccer">
-                                <i class="fas fa-futbol"></i>
+                        
+                        <!-- Recent Reviews -->
+                        <div class="widget">
+                            <div class="widget-header">
+                                <h2>Recent Reviews</h2>
+                                <button class="btn-sm">View All</button>
                             </div>
-                            <h3>Soccer</h3>
-                            <p>2,876 Players</p>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 75%;"></div>
+                            <div class="widget-content">
+                                <ul class="review-list">
+                                    <li class="review-item">
+                                        <div class="review-header">
+                                            <img src="/api/placeholder/40/40" alt="User">
+                                            <div class="review-user">
+                                                <h4>John Doe</h4>
+                                                <div class="rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </div>
+                                            <span class="review-date">2 days ago</span>
+                                        </div>
+                                        <p class="review-text">"Great platform! The tennis event was well organized and I had a fantastic experience."</p>
+                                    </li>
+                                    <li class="review-item">
+                                        <div class="review-header">
+                                            <img src="/api/placeholder/40/40" alt="User">
+                                            <div class="review-user">
+                                                <h4>Emily Chen</h4>
+                                                <div class="rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                </div>
+                                            </div>
+                                            <span class="review-date">5 days ago</span>
+                                        </div>
+                                        <p class="review-text">"PlayNexus has been a game-changer for my training routine. Highly recommended!"</p>
+                                    </li>
+                                </ul>
                             </div>
-                            <p class="growth"><i class="fas fa-arrow-up"></i> 8% growth</p>
-                        </div>
-                        <div class="sport-card">
-                            <div class="sport-icon tennis">
-                                <i class="fas fa-table-tennis"></i>
-                            </div>
-                            <h3>Tennis</h3>
-                            <p>1,987 Players</p>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 60%;"></div>
-                            </div>
-                            <p class="growth"><i class="fas fa-arrow-up"></i> 15% growth</p>
-                        </div>
-                        <div class="sport-card">
-                            <div class="sport-icon swimming">
-                                <i class="fas fa-swimming-pool"></i>
-                            </div>
-                            <h3>Swimming</h3>
-                            <p>1,542 Players</p>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 50%;"></div>
-                            </div>
-                            <p class="growth"><i class="fas fa-arrow-down"></i> 3% decrease</p>
                         </div>
                     </div>
                 </div>
@@ -306,6 +367,6 @@
         </main>
     </div>
 
-    <script src="{% static 'javascript/admin_dashboard.js' %}"></script>
+    <script src="{% static 'javascript/admin_dashboard.js' %}"></script> 
 </body>
 </html>
