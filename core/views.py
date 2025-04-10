@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from core.forms import CustomUserCreationForm
 
 def index(request):
     return render(request, 'index.html')
@@ -43,15 +44,15 @@ def coach_dashboard(request):
     else:
         return redirect('login')
     
-
-def signup(request):
+def signup_view(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('login')  # Redirect to login after signup
+            messages.success(request, "Account created successfully! You can now log in.")
+            return redirect('login')  # change this to your login URL name
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
     return render(request, 'signup.html', {'form': form})
 
 def athlete_dashboard(request):

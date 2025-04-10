@@ -1,113 +1,24 @@
-{% load static %}
+{%load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>SportHive - Sign Up</title>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
     <link rel="stylesheet" href="{% static 'css/signup.css' %}">
 </head>
 <body>
-    <div class="signup-container">
-        <div class="signup-form-container">
-            <form id="signup-form" method="POST" action="{% url 'login' %}">
-                {% csrf_token %}
-                <h2>Create Your Account</h2>
-                <p class="signup-intro">Join the community of athletes and sports enthusiasts</p>
-
-                {% if error %}
-                    <p class="error-message">{{ error }}</p>
-                {% endif %}
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="first_name">First Name</label>
-                        <input type="text" id="first_name" name="first_name" placeholder="John" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="last_name">Last Name</label>
-                        <input type="text" id="last_name" name="last_name" placeholder="Doe" required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" placeholder="Choose a username" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Create a password" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="confirm-password">Confirm Password</label>
-                    <input type="password" id="confirm-password" name="confirm_password" placeholder="Confirm your password" required>
-                </div>
-                <div class="form-group">
-                    <label for="userType">I am a</label>
-                    <select id="userType" class="form-control" required>
-                        <option value="" disabled selected>Select your role</option>
-                        <option value="player">Player</option>
-                        <option value="coach">Coach</option>
-                        <option value="admin">Admin</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="sport">Sport Interest</label>
-                    <select id="sport" class="form-control" required>
-                        <option value="" disabled selected>Select your sport</option>
-                        <option value="basketball">Basketball</option>
-                        <option value="soccer">Soccer</option>
-                        <option value="tennis">Tennis</option>
-                        <option value="swimming">Swimming</option>
-                        <option value="volleyball">Volleyball</option>
-                        <option value="baseball">Baseball</option>
-                        <option value="running">Running</option>
-                        <option value="cricket">Cricket</option>
-                    </select>
-                </div>
-
-                <div class="form-check">
-                    <input type="checkbox" id="terms" name="terms" required />
-                    <label for="terms">
-                        I agree to the <a href="#">terms and conditions</a>
-                    </label>
-                </div>
-
-                <button type="submit" class="signup-button">Sign Up</button>
-
-                <div class="social-signup">
-                    <p>Or sign up with</p>
-                    <div class="social-buttons">
-                        <button type="button" class="social-button"><img src="{% static 'images/google.svg' %}" alt=""> Google</button>
-                        <button type="button" class="social-button"><img src="{% static 'images/facebook.svg' %}" alt=""> Facebook</button>
-                    </div>
-                </div>
-
-                <div class="login-link">
-                    <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
-                </div>
-            </form>
-        </div>
-
-        <div class="signup-banner">
-            <div class="banner-content">
-                <h2>Join SportHive Today</h2>
-                <p>Connect, Compete, and Grow</p>
-                <img src="{% static 'images/athletes.jpg' %}" alt="Group of athletes" />
-            </div>
-        </div>
-    </div>
-
-    <div id="notification" class="notification"></div>
-
-    <script src="{% static 'javascript/signup.js' %}"></script>
+    <h2>Sign Up</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Sign Up</button>
+    </form>
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 </body>
 </html>

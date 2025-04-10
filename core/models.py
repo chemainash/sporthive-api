@@ -4,13 +4,18 @@ import uuid
 
 class UserType(models.TextChoices):
     COACH = 'coach', 'Coach'
-    ADMIN = 'admin', 'Admin'
     ATHLETE = 'athlete', 'Athlete'
 
 class User(AbstractUser):
+    first_name = models.CharField(max_length=255, null=True, blank=True)
+    last_name = models.CharField(max_length=255, null=True, blank=True)
+    username = models.CharField(max_length=255, unique=True)
+    email = models.EmailField(unique=True)
     age = models.IntegerField(null=True, blank=True)
     contacts = models.JSONField(null=True, blank=True)
     user_type = models.CharField(max_length=10, choices=UserType.choices, default=UserType.ATHLETE)
+    profile_picture = models.ImageField(upload_to='profile_pictures/', null=True, blank=True)
+    sport = models.CharField(max_length=50, null=True, blank=True)
 
     def __str__(self):
         return f"{self.id} ({self.username})"
@@ -37,8 +42,6 @@ class Facility(models.Model):
 
     def __str__(self):
         return self.name
-
-
 
 class Event(models.Model):
     name = models.CharField(max_length=255)

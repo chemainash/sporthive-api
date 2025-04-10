@@ -273,3 +273,67 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
+// WebSocket connection for real-time updates
+document.addEventListener('DOMContentLoaded', function() {
+    const athleteId = "{{ user.id }}"; // Get from Django template
+    const socket = new WebSocket(
+        `ws://${window.location.host}/ws/athlete-dashboard/${athleteId}/`
+    );
+
+    // Connection opened
+    socket.addEventListener('open', function(event) {
+        console.log('WebSocket connection established');
+    });
+
+    // Listen for messages
+    socket.addEventListener('message', function(event) {
+        const data = JSON.parse(event.data);
+        handleRealTimeUpdate(data);
+    });
+
+    // Connection closed
+    socket.addEventListener('close', function(event) {
+        console.log('WebSocket connection closed');
+        // Implement reconnection logic
+        setTimeout(connectWebSocket, 5000);
+    });
+
+    function handleRealTimeUpdate(data) {
+        // Update specific dashboard components based on message type
+        switch(data.type) {
+            case 'activity_update':
+                updateActivityFeed(data.activities);
+                break;
+            case 'performance_update':
+                updatePerformanceChart(data.metrics);
+                break;
+            case 'event_update':
+                updateUpcomingEvents(data.events);
+                break;
+            // Add more cases as needed
+        }
+    }
+
+    function updateActivityFeed(activities) {
+        // Implement DOM updates for activity feed
+        const activityList = document.querySelector('.activity-list');
+        activityList.innerHTML = ''; // Clear existing
+        
+        activities.forEach(activity => {
+            const activityItem = document.createElement('div');
+            activityItem.className = 'activity-item';
+            activityItem.innerHTML = `
+                <div class="activity-icon">
+                    <i class="${getActivityIcon(activity.type)}"></i>
+                </div>
+                <div class="activity-details">
+                    <h4>${activity.title}</h4>
+                    <p>${activity.description}</p>
+                    <span class="activity-time">${formatTime(activity.timestamp)}</span>
+                </div>
+            `;
+            activityList.prepend(activityItem);
+        });
+    }
+});

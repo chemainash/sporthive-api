@@ -2,53 +2,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Registration</title>
-    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Event Registration | SportHive</title>
+  <link rel="stylesheet" href="{% static 'css/register.css' %}">
 </head>
 <body>
 
 <div class="container">
-    <header>
-        <h1>Register for the Event</h1>
-        <p>Join the SportHive Movement - Elevate Your Game!</p>
-    </header>
-    
-    <form id="registration-form">
-        <div class="form-group"> 
-            <label for="name">Full Name</label>
-            <input type="text" id="name" name="name" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" required>
-        </div>
+  <header>
+    <h1>Register for the Event</h1>
+    <p>Join the SportHive Movement - Elevate Your Game!</p>
+  </header>
 
-        <div class="form-group">
-            <label for="date">Date of Event</label>
-            <input type="date" id="date" name="date" required>
-        </div>
+  <form id="registration-form">
+    <div class="form-group">
+      <label for="name">Full Name *</label>
+      <input type="text" id="name" name="name" required placeholder="John Doe">
+    </div>
 
-        <div class="form-group">
-            <label for="sport">Select Your Sport</label>
-            <select id="sport" name="sport" required>
-                <option value="basketball">Basketball</option>
-                <option value="swimming">Swimming</option>
-                <option value="rock-climbing">Rock Climbing</option>
-                <option value="soccer">Soccer</option>
-            </select>
-        </div>
+    <div class="form-group">
+      <label for="email">Email Address *</label>
+      <input type="email" id="email" name="email" required placeholder="you@example.com">
+    </div>
 
-        <button type="submit">Register Now</button>
-    </form>
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input type="text" id="phone" name="phone" placeholder="+1 234 567 8901">
+    </div>
 
-    <footer>
-        <p>© 2023 SportHive | Where Passion Meets Performance</p>
-    </footer>
+    <div class="form-group">
+      <label for="gender">Gender</label>
+      <select id="gender" name="gender">
+        <option value="" disabled selected>Select gender</option>
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+        <option value="nonbinary">Non-binary</option>
+        <option value="prefer-not">Prefer not to say</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="date">Date of Event *</label>
+      <input type="date" id="date" name="date" required>
+    </div>
+
+    <div class="form-group">
+      <label for="sport">Select Your Sport *</label>
+      <select id="sport" name="sport" required>
+        <option value="" disabled selected>Select a sport</option>
+        <option value="basketball">Basketball</option>
+        <option value="swimming">Swimming</option>
+        <option value="rock-climbing">Rock Climbing</option>
+        <option value="soccer">Soccer</option>
+        <option value="tennis">Tennis</option>
+        <option value="track">Track & Field</option>
+      </select>
+    </div>
+
+    <div class="form-group checkbox">
+      <label>
+        <input type="checkbox" id="terms" required>
+        I agree to the <a href="#">terms & conditions</a>.
+      </label>
+    </div>
+
+    <button type="submit">Register Now</button>
+    <div class="form-message" id="form-message"></div>
+  </form>
+
+  <footer>
+    <p>© 2025 SportHive | Where Passion Meets Performance</p>
+  </footer>
 </div>
 
-<script src="script.js"></script>
+<script>
+    const form = document.getElementById("registration-form");
+    const message = document.getElementById("form-message");
+    const previousPage = document.referrer;  // captures the page the user came from
+  
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+  
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const date = form.date.value;
+      const sport = form.sport.value;
+      const terms = form.terms.checked;
+  
+      if (!name || !email || !date || !sport || !terms) {
+        message.textContent = "Please complete all required fields.";
+        message.className = "form-message error";
+        return;
+      }
+  
+      message.textContent = "Registration successful! Redirecting...";
+      message.className = "form-message success";
+  
+      setTimeout(() => {
+        // Redirect back to referrer, or fallback to homepage
+        window.location.href = previousPage || "/";
+      }, 1500); // 1.5 second delay for user to read message
+    });
+  </script>
+  
+
 </body>
 </html>
