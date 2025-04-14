@@ -1,11 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from datetime import datetime
 from django.contrib.auth import authenticate, login
-# Removed unused import of CustomUser
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+import json
+from django.views.decorators.http import require_http_methods
+from django.http import JsonResponse
+from .models import Notification
+
+from django.db import models
 from core.forms import CustomUserCreationForm
+from core.models import Team, Event
 
 def index(request):
     return render(request, 'index.html')
@@ -57,7 +64,14 @@ def signup_view(request):
 
 def athlete_dashboard(request):
     if request.user.is_authenticated and request.user.user_type == 'athlete':
-        return render(request, 'athlete_dashboard.html')
+        events, events_count, coming_in = all_events_view(request)
+        print(coming_in)
+
+        return render(request, 'athlete_dashboard.html', {
+                    'events': events,
+                    'events_count': events_count,
+                    'coming_in': coming_in
+                })
     else:
         return redirect('login')
         
@@ -100,3 +114,50 @@ def facilities(request):
     else:
         return render(request, 'index.html')
 
+
+
+@login_required(redirect_field_name='login')
+def user_teams_view(request):
+    user = request.user
+
+    # Query for teams involving this user
+    teams = Team.objects.filter(
+        models.Q(players=user) |
+        models.Q(individual_player=user) |
+        models.Q(coach=user)
+    ).distinct()
+
+    return render(request, 'team.html', {'teams': teams})
+
+def all_events_view(request):
+    events = Event.objects.all().order_by('date')
+    coming_in = events.filter(date__gt=datetime.now()).order_by('date')
+    events_count = events.count()
+    print(coming_in)
+
+    return events, events_count, coming_in
+
+@login_required
+def user_notifications_view(request):
+    notifications = Notification.objects.filter(user=request.user).order_by('-date')
+    unread_count = notifications.filter(is_read=False).count()
+
+    return render(request, 'notifications.html', {
+        'notifications': notifications,
+        'unread_count': unread_count,
+    })
+
+@require_http_methods(["PATCH"])
+def mark_notification_read(request, notification_id):
+    # Get the notification instance
+    notification = get_object_or_404(Notification, id=notification_id)
+
+    # Parse the JSON body of the PATCH request
+    data = json.loads(request.body)
+
+    # Update is_read field
+    if data.get('is_read') is not None:
+        notification.is_read = data['is_read']
+        notification.save()
+
+    return JsonResponse({'success': True})

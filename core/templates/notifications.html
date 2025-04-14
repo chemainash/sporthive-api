@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notifications</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .notification {
+            background-color: #fff;
+            border-left: 5px solid #4CAF50;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .notification.unread {
+            border-left-color: #f44336;
+        }
+        .notification.sms {
+            border-left-color: #2196F3;
+        }
+        .notification.email {
+            border-left-color: #9C27B0;
+        }
+        .notification.app {
+            border-left-color: #FF9800;
+        }
+        .subject {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .date {
+            font-size: 0.85rem;
+            color: #888;
+        }
+        .message {
+            margin-top: 0.5rem;
+        }
+        form {
+            margin-top: 0.5rem;
+        }
+        .mark-read-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .pagination {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .pagination span, .pagination a {
+            margin: 0 5px;
+            text-decoration: none;
+            color: #444;
+        }
+        .pagination a {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Notifications ({{ unread_count }} unread)</h2>
+        {% for notification in notifications %}
+            <div class="notification {{ notification.channel|lower }} {% if not notification.is_read %}unread{% endif %}">
+                <div class="subject">{{ notification.subject }}</div>
+                <div class="date">{{ notification.date|date:"F j, Y, g:i a" }}</div>
+                <div class="message">{{ notification.message }}</div>
+                {% if not notification.is_read %}
+                     
+                <a href="{% url 'mark_notification_read' notification.id %}">Mark as read</a>
+                    {% csrf_token %}
+                    <button class="mark-read-btn" type="button" onclick="markAsRead('{{ notification.id }}')">Mark as Read</button>
+                </form>
+                {% endif %}
+            </div>
+        {% empty %}
+            <p>No notifications available.</p>
+        {% endfor %}
+
+        <div class="pagination">
+            {% if notifications.has_previous %}
+                <a href="?page={{ notifications.previous_page_number }}">Previous</a>
+            {% endif %}
+
+            <span>Page {{ notifications.number }} of {{ notifications.paginator.num_pages }}</span>
+
+            {% if notifications.has_next %}
+                <a href="?page={{ notifications.next_page_number }}">Next</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        function markAsRead(notificationId) {
+            fetch("{% url 'mark_notification_read' notification.id %}", {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': document.querySelector('[name="csrfmiddlewaretoken"]').value,
+                },
+                body: JSON.stringify({ 'is_read': true })
+            })
+
+            .then(response => {
+                if (response.ok) {
+                    // You can update the UI or redirect after marking as read
+                    location.reload();  // Reload the page or you could dynamically update the notification
+                } else {
+                    console.error("Failed to mark notification as read");
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+
+</body>
+</html>

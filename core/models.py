@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-import uuid
+
 
 class UserType(models.TextChoices):
     COACH = 'coach', 'Coach'
@@ -22,9 +22,21 @@ class User(AbstractUser):
 
 class Team(models.Model):
     name = models.CharField(max_length=255)
-    players = models.ManyToManyField(User, related_name='teams')
-    individual_player = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='individual_teams')
-    coach = models.ForeignKey(User, on_delete=models.CASCADE, related_name='coached_teams')
+    players = models.ManyToManyField(User,
+            related_name='teams',
+            limit_choices_to={'user_type': UserType.ATHLETE},
+            blank=True)
+    
+    individual_player = models.ForeignKey(User,
+            on_delete=models.SET_NULL,
+            null=True, blank=True, 
+            limit_choices_to={'user_type': UserType.ATHLETE},
+            related_name='individual_teams')
+    coach = models.ForeignKey(User,
+            on_delete=models.CASCADE,
+            limit_choices_to={'user_type': UserType.COACH},
+            blank=True, null=True,
+            related_name='coached_teams')
     kits = models.CharField(max_length=255)
 
     def __str__(self):

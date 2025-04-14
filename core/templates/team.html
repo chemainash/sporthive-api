@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Teams</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f4f6f8;
+            padding: 2rem;
+        }
+        .team {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .team h3 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Teams</h1>
+
+    {% if teams %}
+        {% for team in teams %}
+            <div class="team">
+                <h3>{{ team.name }}</h3>
+                <p><strong>Kits:</strong> {{ team.kits }}</p>
+                <p><strong>Coach:</strong> {{ team.coach.get_full_name|default:"None" }}</p>
+                <p><strong>Individual Player:</strong> {{ team.individual_player.get_full_name|default:"None" }}</p>
+                <p><strong>Other Players:</strong></p>
+                <ul>
+                    {% for player in team.players.all %}
+                        <li>{{ player.get_full_name|default:player.username }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>You are not associated with any teams yet.</p>
+    {% endif %}
+</body>
+</html>
